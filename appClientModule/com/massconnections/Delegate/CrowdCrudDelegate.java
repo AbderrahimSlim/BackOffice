@@ -1,5 +1,7 @@
 package com.massconnections.Delegate;
 
+import java.util.List;
+
 import com.massconnections.Domains.Crowd;
 import com.massconnections.Services.CrowdCrudEJBRemote;
 import com.massconnections.locator.ServiceLocator;
@@ -15,7 +17,7 @@ public class CrowdCrudDelegate {
 		return cart;
 	}
 
-	public static void addCrowd(Crowd crowd) { //d
+	public static void addCrowd(Crowd crowd) {
 		getRemoteEJB().addCrowd(crowd);
 	}
 
@@ -23,6 +25,12 @@ public class CrowdCrudDelegate {
 		return getRemoteEJB().getById(id);
 	}
 
-	
+	public static List<Crowd> getCrowds() {
+		return getRemoteEJB().getCrowds();
+	}
+
+	public static void delete(Crowd c) {
+		getRemoteEJB().delete(c);
+	}
 
 }
