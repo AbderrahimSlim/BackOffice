@@ -4,18 +4,18 @@ import com.massconnections.Domains.Crowd;
 import com.massconnections.Services.CrowdCrudEJBRemote;
 import com.massconnections.locator.ServiceLocator;
 
-public class UserCrudDelegate {
+public class CrowdCrudDelegate {
 	private static CrowdCrudEJBRemote cart;
 
 	private static CrowdCrudEJBRemote getRemoteEJB() {
 		cart = (CrowdCrudEJBRemote) ServiceLocator
 				.getInstance()
 				.getProxy(
-						"/massconnection-ejb/UserCrudEJB!com.massconnections.Services.UserCrudEJBRemote");
+						"/massconnection-ejb/CrowdCrudEJB!com.massconnections.Services.CrowdCrudEJBRemote/");
 		return cart;
 	}
 
-	public static void addCrowd(Crowd crowd) {
+	public static void addCrowd(Crowd crowd) { //d
 		getRemoteEJB().addCrowd(crowd);
 	}
 
@@ -23,12 +23,6 @@ public class UserCrudDelegate {
 		return getRemoteEJB().getById(id);
 	}
 
-	public static void main(String[] args) {
-
-		Crowd c = new Crowd();
-		c.setLastName("aaa");
-		
-
-	}
+	
 
 }
