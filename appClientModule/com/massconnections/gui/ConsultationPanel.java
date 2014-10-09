@@ -11,14 +11,22 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JTable;
 
+import com.massconnections.Model.CrowdTableModel;
+import com.massconnections.Model.GenericTableModel;
+
 public class ConsultationPanel extends JPanel {
 	private JTextField textField;
 	private JTable table;
+	private GenericTableModel tableModel;
 
 	/**
 	 * Create the panel.
 	 */
-	public ConsultationPanel() {
+	public ConsultationPanel(String type) {
+		
+		if(type.equals("crowds")){
+			tableModel =  new CrowdTableModel();
+		}
 		
 		JScrollPane scrollPane = new JScrollPane();
 		
@@ -67,6 +75,7 @@ public class ConsultationPanel extends JPanel {
 		);
 		
 		table = new JTable();
+		table.setModel(tableModel);
 		scrollPane.setViewportView(table);
 		setLayout(groupLayout);
 
