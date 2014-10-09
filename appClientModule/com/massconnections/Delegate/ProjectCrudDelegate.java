@@ -1,5 +1,7 @@
 package com.massconnections.Delegate;
 
+import java.util.List;
+
 import com.massconnections.Domains.Project;
 import com.massconnections.Services.ProjectCrudEJBRemote;
 import com.massconnections.locator.ServiceLocator;
@@ -22,6 +24,9 @@ public class ProjectCrudDelegate {
 	public static void denieProject(Project p){
 		p.setState(-1);
 		getRemoteEJB().update(p);
+	}
+	public static List<Project> getAllProjects(){
+		return getRemoteEJB().getProjects();
 	}
 
 }
