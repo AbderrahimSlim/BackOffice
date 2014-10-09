@@ -15,7 +15,7 @@ public class CrowdCrudDelegate {
 		return cart;
 	}
 
-	public static void addCrowd(Crowd crowd) {
+	public static void addCrowd(Crowd crowd) { //d
 		getRemoteEJB().addCrowd(crowd);
 	}
 
