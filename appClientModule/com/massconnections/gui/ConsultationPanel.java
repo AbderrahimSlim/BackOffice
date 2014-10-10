@@ -13,6 +13,7 @@ import javax.swing.JTable;
 
 import com.massconnections.Model.CrowdTableModel;
 import com.massconnections.Model.GenericTableModel;
+import com.massconnections.Model.ProjectsTableModel;
 
 public class ConsultationPanel extends JPanel {
 	private JTextField textField;
@@ -26,6 +27,9 @@ public class ConsultationPanel extends JPanel {
 		
 		if(type.equals("crowds")){
 			tableModel =  new CrowdTableModel();
+		}
+		if(type.equals("projects")){
+			tableModel =  new ProjectsTableModel();
 		}
 		
 		JScrollPane scrollPane = new JScrollPane();

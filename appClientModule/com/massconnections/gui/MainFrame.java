@@ -9,7 +9,9 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.border.LineBorder;
+
 import java.awt.Color;
+
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class MainFrame extends JFrame {
@@ -63,6 +65,6 @@ public class MainFrame extends JFrame {
 		);
 		bodyPanel.setLayout(new BorderLayout(0, 0));
 		contentPane.setLayout(gl_contentPane);
-		bodyPanel.add(new ConsultationPanel("crowds"));
+		bodyPanel.add(new ConsultationPanel("projects"));
 	}
 }
