@@ -28,5 +28,9 @@ public class ProjectCrudDelegate {
 	public static List<Project> getAllProjects(){
 		return getRemoteEJB().getProjects();
 	}
+	
+	public static Project getById(int id){
+		return getRemoteEJB().getById(id);
+	}
 
 }

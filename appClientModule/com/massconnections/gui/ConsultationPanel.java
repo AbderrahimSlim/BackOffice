@@ -11,9 +11,12 @@ import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JTable;
 
+import com.massconnections.Delegate.ProjectCrudDelegate;
+import com.massconnections.Domains.Project;
 import com.massconnections.Model.CrowdTableModel;
 import com.massconnections.Model.GenericTableModel;
 import com.massconnections.Model.ProjectsTableModel;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -147,11 +150,24 @@ public class ConsultationPanel extends JPanel {
 		JButton approveBtn = new JButton("Approve");
 		approveBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(table.getSelectedRow());
+				ProjectCrudDelegate.approveProject(ProjectCrudDelegate
+						.getById(((Integer) table.getValueAt(
+								table.getSelectedRow(), 0)).intValue()));
+				tableModel = new ProjectsTableModel();
+				table.setModel(tableModel);
 			}
 		});
 		optionPanel.add(approveBtn);
 		JButton denieBtn = new JButton("Denie");
+		denieBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ProjectCrudDelegate.denieProject(ProjectCrudDelegate
+						.getById(((Integer) table.getValueAt(
+								table.getSelectedRow(), 0)).intValue()));
+				tableModel = new ProjectsTableModel();
+				table.setModel(tableModel);
+			}
+		});
 		optionPanel.add(denieBtn);
 
 		table = new JTable();
