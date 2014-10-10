@@ -16,7 +16,6 @@ public class CrowdTableModel extends GenericTableModel {
 	private boolean searching = false;
 
 	public CrowdTableModel() {
-		//crowdList.add(CrowdCrudDelegate.getCrowd(1));
 		crowdList = CrowdCrudDelegate.getCrowds();
 	}
 
