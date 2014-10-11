@@ -3,7 +3,6 @@ package com.massconnections.Model;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.massconnections.Delegate.CrowdCrudDelegate;
 import com.massconnections.Delegate.ProjectCrudDelegate;
 import com.massconnections.Domains.Project;
 
@@ -106,12 +105,36 @@ public class ProjectsTableModel extends GenericTableModel {
 	}
 
 	@Override
-	public void initSearch(String text, int selectedIndex) {
-		throw new UnsupportedOperationException("Not supported yet.");
-	}
-
-	@Override
 	public void removeRows(List elements) {
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
+
+	/*
+	 * public void initSearch(String searchString, int searchIndex) {
+	 * resultSearchList = new ArrayList<Project>(); if (searchString.length() >
+	 * 0) { searching = true; for (Project project : projectList) { if
+	 * (searchIndex == 0) { if (project.getFirstName() != null) { if (project
+	 * .getFirstName() .toUpperCase() .matches( "(.*)" +
+	 * searchString.toUpperCase() + "(.*)")) { resultSearchList.add(project); }
+	 * } } else if (searchIndex == 1) { if (project.getLastName() != null) { if
+	 * (project .getLastName() .toUpperCase() .matches( "(.*)" +
+	 * searchString.toUpperCase() + "(.*)")) { resultSearchList.add(project); }
+	 * } } else if (searchIndex == 2) { if (project.getBirthDate() != null) { if
+	 * ((project.getAge() + "").matches("(.*)" + searchString + "(.*)")) {
+	 * resultSearchList.add(project); } } } else if (searchIndex == 3) { if
+	 * (project.getSex() + "" != null) { if (project .getLogin() .toUpperCase()
+	 * .matches( "(.*)" + searchString.toUpperCase() + "(.*)")) {
+	 * resultSearchList.add(project); } } } else if (searchIndex == 4) { if
+	 * (project.getLogin() != null) { if (project .getLogin() .toUpperCase()
+	 * .matches( "(.*)" + searchString.toUpperCase() + "(.*)")) {
+	 * resultSearchList.add(project); } } } else if (searchIndex == 5) { if
+	 * (project.getEmail() != null) { if (project .getEmail() .toUpperCase()
+	 * .matches( "(.*)" + searchString.toUpperCase() + "(.*)")) {
+	 * resultSearchList.add(project); } } } else if (searchIndex == 6) { if
+	 * (project.getProjects() != null) { if (project.getProjects().size() ==
+	 * Integer .parseInt(searchString)) { resultSearchList.add(project); } } }
+	 * else if (searchIndex == 7) { if (project.getChallenges() != null) { if
+	 * (project.getChallenges().size() == Integer .parseInt(searchString)) {
+	 * resultSearchList.add(project); } } } } } else { searching = false; } }
+	 */
 }

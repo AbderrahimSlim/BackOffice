@@ -10,6 +10,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import javax.swing.JTable;
+import javax.swing.plaf.OptionPaneUI;
 
 import com.massconnections.Delegate.ProjectCrudDelegate;
 import com.massconnections.Domains.Project;
@@ -31,12 +32,6 @@ public class ConsultationPanel extends JPanel {
 	 */
 	public ConsultationPanel(String type) {
 
-		if (type.equals("crowds")) {
-			tableModel = new CrowdTableModel();
-		}
-		if (type.equals("projects")) {
-			tableModel = new ProjectsTableModel();
-		}
 		this.type = type;
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -147,32 +142,36 @@ public class ConsultationPanel extends JPanel {
 												GroupLayout.PREFERRED_SIZE)
 										.addContainerGap()));
 
-		JButton approveBtn = new JButton("Approve");
-		approveBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ProjectCrudDelegate.approveProject(ProjectCrudDelegate
-						.getById(((Integer) table.getValueAt(
-								table.getSelectedRow(), 0)).intValue()));
-				tableModel = new ProjectsTableModel();
-				table.setModel(tableModel);
-			}
-		});
-		optionPanel.add(approveBtn);
-		JButton denieBtn = new JButton("Denie");
-		denieBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ProjectCrudDelegate.denieProject(ProjectCrudDelegate
-						.getById(((Integer) table.getValueAt(
-								table.getSelectedRow(), 0)).intValue()));
-				tableModel = new ProjectsTableModel();
-				table.setModel(tableModel);
-			}
-		});
-		optionPanel.add(denieBtn);
-
 		table = new JTable();
+		if (type.equals("projects")) {
+			tableModel = new ProjectsTableModel();
+			JButton approveBtn = new JButton("Approve");
+			approveBtn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ProjectCrudDelegate.approveProject(ProjectCrudDelegate
+							.getById(((Integer) table.getValueAt(
+									table.getSelectedRow(), 0)).intValue()));
+					tableModel = new ProjectsTableModel();
+					table.setModel(tableModel);
+				}
+			});
+			optionPanel.add(approveBtn);
+			JButton denieBtn = new JButton("Denie");
+			denieBtn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ProjectCrudDelegate.denieProject(ProjectCrudDelegate
+							.getById(((Integer) table.getValueAt(
+									table.getSelectedRow(), 0)).intValue()));
+					tableModel = new ProjectsTableModel();
+					table.setModel(tableModel);
+				}
+			});
+			optionPanel.add(denieBtn);
+		}
+		if (type.equals("crowds")) {
+			tableModel = new CrowdTableModel();
+		}
 		table.setModel(tableModel);
-
 		scrollPane.setViewportView(table);
 		setLayout(groupLayout);
 
