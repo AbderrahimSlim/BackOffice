@@ -1,25 +1,25 @@
 package com.massconnections.gui;
 
-import javax.swing.JPanel;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JScrollPane;
+import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.JComboBox;
-import javax.swing.JButton;
-import javax.swing.JTable;
-import javax.swing.plaf.OptionPaneUI;
 
 import com.massconnections.Delegate.ProjectCrudDelegate;
-import com.massconnections.Domains.Project;
 import com.massconnections.Model.CrowdTableModel;
 import com.massconnections.Model.GenericTableModel;
 import com.massconnections.Model.ProjectsTableModel;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
 
 public class ConsultationPanel extends JPanel {
 	private JTextField searchTextField;
@@ -39,6 +39,16 @@ public class ConsultationPanel extends JPanel {
 		JLabel lblRecherche = new JLabel("Search By:");
 
 		searchTextField = new JTextField();
+		searchTextField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				tableModel = new ProjectsTableModel();
+				
+				tableModel.initSearch(searchTextField.getText(), 7);
+				
+				table.setModel(tableModel);
+			}
+		});
 		searchTextField.setColumns(10);
 
 		JComboBox categComboBox = new JComboBox();
@@ -116,6 +126,9 @@ public class ConsultationPanel extends JPanel {
 		}
 		if (type.equals("crowds")) {
 			tableModel = new CrowdTableModel();
+		}
+		if (type.equals("challenges")){
+			
 		}
 		table.setModel(tableModel);
 		scrollPane.setViewportView(table);

@@ -109,32 +109,80 @@ public class ProjectsTableModel extends GenericTableModel {
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
 
-	/*
-	 * public void initSearch(String searchString, int searchIndex) {
-	 * resultSearchList = new ArrayList<Project>(); if (searchString.length() >
-	 * 0) { searching = true; for (Project project : projectList) { if
-	 * (searchIndex == 0) { if (project.getFirstName() != null) { if (project
-	 * .getFirstName() .toUpperCase() .matches( "(.*)" +
-	 * searchString.toUpperCase() + "(.*)")) { resultSearchList.add(project); }
-	 * } } else if (searchIndex == 1) { if (project.getLastName() != null) { if
-	 * (project .getLastName() .toUpperCase() .matches( "(.*)" +
-	 * searchString.toUpperCase() + "(.*)")) { resultSearchList.add(project); }
-	 * } } else if (searchIndex == 2) { if (project.getBirthDate() != null) { if
-	 * ((project.getAge() + "").matches("(.*)" + searchString + "(.*)")) {
-	 * resultSearchList.add(project); } } } else if (searchIndex == 3) { if
-	 * (project.getSex() + "" != null) { if (project .getLogin() .toUpperCase()
-	 * .matches( "(.*)" + searchString.toUpperCase() + "(.*)")) {
-	 * resultSearchList.add(project); } } } else if (searchIndex == 4) { if
-	 * (project.getLogin() != null) { if (project .getLogin() .toUpperCase()
-	 * .matches( "(.*)" + searchString.toUpperCase() + "(.*)")) {
-	 * resultSearchList.add(project); } } } else if (searchIndex == 5) { if
-	 * (project.getEmail() != null) { if (project .getEmail() .toUpperCase()
-	 * .matches( "(.*)" + searchString.toUpperCase() + "(.*)")) {
-	 * resultSearchList.add(project); } } } else if (searchIndex == 6) { if
-	 * (project.getProjects() != null) { if (project.getProjects().size() ==
-	 * Integer .parseInt(searchString)) { resultSearchList.add(project); } } }
-	 * else if (searchIndex == 7) { if (project.getChallenges() != null) { if
-	 * (project.getChallenges().size() == Integer .parseInt(searchString)) {
-	 * resultSearchList.add(project); } } } } } else { searching = false; } }
-	 */
+	public void initSearch(String searchString, int searchIndex) {
+		resultSearchList = new ArrayList<Project>();
+		if (searchString.length() > 0) {
+			searching = true;
+			for (Project project : projectList) {
+				if (searchIndex == 0) {
+					if ("" + project.getId() != null) {
+						if (("" + project.getId()).toUpperCase().matches(
+								"(.*)" + searchString.toUpperCase() + "(.*)")) {
+							resultSearchList.add(project);
+						}
+					}
+				} else if (searchIndex == 2) {
+					if (project.getUser().getFirstName() != null) {
+						if (project
+								.getUser()
+								.getFirstName()
+								.toUpperCase()
+								.matches(
+										"(.*)" + searchString.toUpperCase()
+												+ "(.*)")) {
+							resultSearchList.add(project);
+						}
+					}
+				} else if (searchIndex == 1) {
+					if (project.getTitle() != null) {
+						if (project
+								.getTitle()
+								.toUpperCase()
+								.matches(
+										"(.*)" + searchString.toUpperCase()
+												+ "(.*)")) {
+							resultSearchList.add(project);
+						}
+					}
+				} else if (searchIndex == 3) {
+					if (project.getDescription() != null) {
+						if (project
+								.getDescription()
+								.toUpperCase()
+								.matches(
+										"(.*)" + searchString.toUpperCase()
+												+ "(.*)")) {
+							resultSearchList.add(project);
+						}
+					}
+
+				}/*
+				 * else if (searchIndex == 4) { if (project.getLogin() != null)
+				 * { if (project .getLogin() .toUpperCase() .matches( "(.*)" +
+				 * searchString.toUpperCase() + "(.*)")) {
+				 * resultSearchList.add(project); } } } else if (searchIndex ==
+				 * 5) { if (project.getEmail() != null) { if (project
+				 * .getEmail() .toUpperCase() .matches( "(.*)" +
+				 * searchString.toUpperCase() + "(.*)")) {
+				 * resultSearchList.add(project); } } }
+				 */else if (searchIndex == 6) {
+					if (project.getAmount() + "" != null) {
+						if ((project.getAmount() + "").toUpperCase().matches(
+								"(.*)" + searchString.toUpperCase() + "(.*)")) {
+							resultSearchList.add(project);
+						}
+					}
+				} else if (searchIndex == 7) {
+					String x[] = {"Denied", "Wating", "Approved"};
+					System.out.println(project.getState()+1);
+					if (x[project.getState()+1].toUpperCase().matches("(.*)" + searchString.toUpperCase() + "(.*)")){
+						
+					}
+				}
+			}
+		} else {
+			searching = false;
+		}
+	}
+
 }
