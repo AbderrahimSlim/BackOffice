@@ -28,12 +28,6 @@ public class ConsultationPanel extends JPanel {
 	 */
 	public ConsultationPanel(String type) {
 
-		if (type.equals("crowds")) {
-			tableModel = new CrowdTableModel();
-		}
-		if (type.equals("projects")) {
-			tableModel = new ProjectsTableModel();
-		}
 		this.type = type;
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -59,9 +53,8 @@ public class ConsultationPanel extends JPanel {
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout
 				.setHorizontalGroup(groupLayout
-						.createParallelGroup(Alignment.LEADING)
+						.createParallelGroup(Alignment.TRAILING)
 						.addGroup(
-								Alignment.TRAILING,
 								groupLayout
 										.createSequentialGroup()
 										.addContainerGap()
@@ -70,13 +63,13 @@ public class ConsultationPanel extends JPanel {
 														.createParallelGroup(
 																Alignment.TRAILING)
 														.addComponent(
-																scrollPane,
+																optionPanel,
 																Alignment.LEADING,
 																GroupLayout.DEFAULT_SIZE,
 																675,
 																Short.MAX_VALUE)
 														.addComponent(
-																optionPanel,
+																scrollPane,
 																Alignment.LEADING,
 																GroupLayout.DEFAULT_SIZE,
 																675,
@@ -140,25 +133,73 @@ public class ConsultationPanel extends JPanel {
 										.addPreferredGap(
 												ComponentPlacement.RELATED)
 										.addComponent(optionPanel,
-												GroupLayout.PREFERRED_SIZE, 27,
+												GroupLayout.PREFERRED_SIZE,
+												GroupLayout.DEFAULT_SIZE,
 												GroupLayout.PREFERRED_SIZE)
-										.addContainerGap()));
+										.addGap(5)));
 
-		JButton approveBtn = new JButton("Approve");
-		approveBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.out.println(table.getSelectedRow());
-			}
-		});
-		optionPanel.add(approveBtn);
-		JButton denieBtn = new JButton("Denie");
-		optionPanel.add(denieBtn);
-
-		table = new JTable();
-		table.setModel(tableModel);
+		
 
 		scrollPane.setViewportView(table);
 		setLayout(groupLayout);
 
+		if (type.equals("crowds")) {
+			tableModel = new CrowdTableModel();
+			
+		}
+		if (type.equals("projects")) {
+			tableModel = new ProjectsTableModel();
+			optionPanel.add(new projectMenuPanel());
+		}
+		
+		
+		table = new JTable();
+		table.setModel(tableModel);
+
+	}
+
+	public class projectMenuPanel extends JPanel {
+
+		/**
+		 * Create the panel.
+		 */
+		public projectMenuPanel() {
+
+			JButton approveBtn = new JButton("Approve");
+			approveBtn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					System.out.println(table.getSelectedRow());
+				}
+			});
+
+			JButton denieBtn = new JButton("Denie");
+			GroupLayout groupLayout = new GroupLayout(this);
+			groupLayout.setHorizontalGroup(groupLayout.createParallelGroup(
+					Alignment.LEADING).addGroup(
+					groupLayout
+							.createSequentialGroup()
+							.addGap(139)
+							.addComponent(approveBtn,
+									GroupLayout.PREFERRED_SIZE, 73,
+									GroupLayout.PREFERRED_SIZE)
+							.addGap(5)
+							.addComponent(denieBtn, GroupLayout.PREFERRED_SIZE,
+									59, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap(174, Short.MAX_VALUE)));
+			groupLayout.setVerticalGroup(groupLayout.createParallelGroup(
+					Alignment.LEADING).addGroup(
+					groupLayout
+							.createSequentialGroup()
+							.addGap(24)
+							.addGroup(
+									groupLayout
+											.createParallelGroup(
+													Alignment.LEADING)
+											.addComponent(approveBtn)
+											.addComponent(denieBtn))
+							.addContainerGap(28, Short.MAX_VALUE)));
+			setLayout(groupLayout);
+
+		}
 	}
 }
