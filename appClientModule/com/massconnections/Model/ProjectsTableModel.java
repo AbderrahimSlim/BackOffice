@@ -85,7 +85,7 @@ public class ProjectsTableModel extends GenericTableModel {
 			return project.getAmount();
 		} else if (columnIndex == 7) {
 			if (project.getState() == 0)
-				return "Wating";
+				return "Waiting";
 			else if (project.getState() == 1)
 				return "Approved";
 			else
@@ -173,10 +173,10 @@ public class ProjectsTableModel extends GenericTableModel {
 						}
 					}
 				} else if (searchIndex == 7) {
-					String x[] = {"Denied", "Wating", "Approved"};
-					System.out.println(project.getState()+1);
-					if (x[project.getState()+1].toUpperCase().matches("(.*)" + searchString.toUpperCase() + "(.*)")){
-						
+					String x[] = {"DENIED", "WAITING", "APPROVED"};
+					if (x[project.getState() + 1].toUpperCase().matches(
+							"(.*)" + searchString.toUpperCase() + "(.*)")){
+						resultSearchList.add(project);
 					}
 				}
 			}
