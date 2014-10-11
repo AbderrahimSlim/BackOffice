@@ -16,7 +16,9 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import com.massconnections.Delegate.ChallengeCrudDelegate;
 import com.massconnections.Delegate.ProjectCrudDelegate;
+import com.massconnections.Model.ChallengesTableModel;
 import com.massconnections.Model.CrowdTableModel;
 import com.massconnections.Model.GenericTableModel;
 import com.massconnections.Model.ProjectsTableModel;
@@ -127,8 +129,30 @@ public class ConsultationPanel extends JPanel {
 		if (type.equals("crowds")) {
 			tableModel = new CrowdTableModel();
 		}
-		if (type.equals("challenges")){
-			
+		if (type.equals("challenges")) {
+			tableModel = new ChallengesTableModel();
+			JButton approveBtn = new JButton("Approve");
+			approveBtn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+					ChallengeCrudDelegate.approveChalenge(ChallengeCrudDelegate
+							.getChallenge(((Integer) table.getValueAt(
+									table.getSelectedRow(), 0)).intValue()));
+					tableModel = new ChallengesTableModel();
+					table.setModel(tableModel);
+				}
+			});
+			optionPanel.add(approveBtn);
+			JButton denieBtn = new JButton("Denie");
+			denieBtn.addActionListener(new ActionListener() {
+				public void actionPerformed(ActionEvent e) {
+						ChallengeCrudDelegate.denieChalenge(ChallengeCrudDelegate
+								.getChallenge(((Integer) table.getValueAt(
+										table.getSelectedRow(), 0)).intValue()));
+						tableModel = new ChallengesTableModel();
+						table.setModel(tableModel);
+				}
+			});
+			optionPanel.add(denieBtn);
 		}
 		table.setModel(tableModel);
 		scrollPane.setViewportView(table);

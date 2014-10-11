@@ -7,7 +7,6 @@ import com.massconnections.Services.ChallengeCrudEJBRemote;
 import com.massconnections.locator.ServiceLocator;
 
 public class ChallengeCrudDelegate {
-	
 
 	private static ChallengeCrudEJBRemote chal;
 
@@ -16,7 +15,7 @@ public class ChallengeCrudDelegate {
 				.getInstance()
 				.getProxy(
 						"/massconnection-ejb/ChallengeCrudEJB!com.massconnections.Services.ChallengeCrudEJBRemote/");
-		return  chal;
+		return chal;
 	}
 
 	public static void addchallenge(Challenge challenge) {
@@ -28,6 +27,9 @@ public class ChallengeCrudDelegate {
 	}
 
 	public static List<Challenge> getChallenges() {
+		System.out.println("********************************");
+		System.out.println(getRemoteEJB());
+		System.out.println("********************************");
 		return getRemoteEJB().getChallenges();
 	}
 
@@ -35,5 +37,16 @@ public class ChallengeCrudDelegate {
 		getRemoteEJB().delete(challenge);
 	}
 
+	public static void approveChalenge(Challenge challenge) {
+		challenge.setState(1);
+		getRemoteEJB().update(challenge);
+
+	}
+
+	public static void denieChalenge(Challenge challenge) {
+		challenge.setState(-1);
+		getRemoteEJB().update(challenge);
+
+	}
 
 }
