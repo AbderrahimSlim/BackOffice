@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.massconnections.Delegate.ChallengeCrudDelegate;
 import com.massconnections.Domains.Challenge;
+import com.massconnections.Domains.Project;
 
 public class ChallengesTableModel extends GenericTableModel {
 
@@ -72,10 +73,10 @@ public class ChallengesTableModel extends GenericTableModel {
 				return "";
 		} else if (columnIndex == 4) {
 			if (challenge.getCategory() != null)
-				return challenge.getCategory();
+				return challenge.getCategory().getName();
 			else
 				return "";
-		} else if (columnIndex == 7) {
+		} else if (columnIndex == 5) {
 			if (challenge.getState() == 0)
 				return "Wating";
 			else if (challenge.getState() == 1)
@@ -94,9 +95,79 @@ public class ChallengesTableModel extends GenericTableModel {
 	}
 
 	@Override
-	public void initSearch(String text, int selectedIndex) {
-		throw new UnsupportedOperationException("Not supported yet.");
+	public void initSearch(String searchString, int searchIndex) {
+		
+					resultSearchList = new ArrayList<Challenge>();
+		if (searchString.length() > 0) {
+			searching = true;
+			for (Challenge challenge : ChallengeList) {
+				if (searchIndex == 0) {
+					if ("" + challenge.getId() != null) {
+						if (("" + challenge.getId()).toUpperCase().matches(
+								"(.*)" + searchString.toUpperCase() + "(.*)")) {
+							resultSearchList.add(challenge);
+						}
+					}
+				} else if (searchIndex == 2) {
+					if (challenge.getUser().getFirstName() != null) {
+						if (challenge
+								.getUser()
+								.getFirstName()
+								.toUpperCase()
+								.matches(
+										"(.*)" + searchString.toUpperCase()
+												+ "(.*)")) {
+							resultSearchList.add(challenge);
+						}
+					}
+				} else if (searchIndex == 1) {
+					if (challenge.getTitle() != null) {
+						if (challenge
+								.getTitle()
+								.toUpperCase()
+								.matches(
+										"(.*)" + searchString.toUpperCase()
+												+ "(.*)")) {
+							resultSearchList.add(challenge);
+						}
+					}
+				} else if (searchIndex == 3) {
+					if (challenge.getDescription() != null) {
+						if (challenge
+								.getDescription()
+								.toUpperCase()
+								.matches(
+										"(.*)" + searchString.toUpperCase()
+												+ "(.*)")) {
+							resultSearchList.add(challenge);
+						}
+					}
+
+				}
+				 else if (searchIndex == 4) {
+
+if (challenge.getCategory().getName() != null) {
+						if (challenge.getCategory().getName()
+								.toUpperCase()
+								.matches(
+										"(.*)" + searchString.toUpperCase()
+												+ "(.*)")) {
+							resultSearchList.add(challenge);
+						}
+					}
+				} else if (searchIndex == 5) {
+					String x[] = {"DENIED", "WAITING", "APPROVED"};
+					if (x[challenge.getState() + 1].toUpperCase().matches(
+							"(.*)" + searchString.toUpperCase() + "(.*)")){
+						resultSearchList.add(challenge);
+					}
+				}
+			}
+		} else {
+			searching = false;
+		}
 	}
+	
 
 	@Override
 	public void removeRows(List elements) {

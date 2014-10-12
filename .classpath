@@ -15,5 +15,6 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/massconnection-ejb"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jBossLibs"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jboss-client-lib"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

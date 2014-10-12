@@ -159,7 +159,7 @@ public class ConsultationPanel extends JPanel {
 		table = new JTable();
 		if (type.equals("projects")) {
 			tableModel = new ProjectsTableModel();
-			String[] options = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+			String[] options = { "Id", "Title", "Creator", "4", "5", "6", "7", "8", "9" };
 			categComboBox.setModel(new DefaultComboBoxModel(options));
 			JButton approveBtn = new JButton("Approve");
 			approveBtn.addActionListener(new ActionListener() {
@@ -172,7 +172,7 @@ public class ConsultationPanel extends JPanel {
 				}
 			});
 			optionPanel.add(approveBtn);
-			JButton denieBtn = new JButton("Denie");
+			JButton denieBtn = new JButton("Deny");
 			denieBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					ProjectCrudDelegate.denieProject(ProjectCrudDelegate
@@ -188,7 +188,11 @@ public class ConsultationPanel extends JPanel {
 			tableModel = new CrowdTableModel();
 		}
 		if (type.equals("challenges")) {
+			
 			tableModel = new ChallengesTableModel();
+			String[] options = { "Id", "Title", "Submitter", "Description", "Category", "State"};
+			categComboBox.setModel(new DefaultComboBoxModel(options));
+			
 
 			JButton approveBtn = new JButton("Approve");
 			approveBtn.addActionListener(new ActionListener() {
@@ -201,7 +205,7 @@ public class ConsultationPanel extends JPanel {
 				}
 			});
 			optionPanel.add(approveBtn);
-			JButton denieBtn = new JButton("Denie");
+			JButton denieBtn = new JButton("Deny");
 			denieBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					ChallengeCrudDelegate.denieChalenge(ChallengeCrudDelegate
