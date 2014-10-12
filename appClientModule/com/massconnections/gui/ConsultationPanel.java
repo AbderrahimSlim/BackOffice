@@ -162,7 +162,7 @@ public class ConsultationPanel extends JPanel {
 		table = new JTable();
 		if (type.equals("projects")) {
 			tableModel = new ProjectsTableModel();
-			String[] options = { "Id", "Title", "Creator", "4", "5", "6", "7", "8", "9" };
+			String[] options = { "Id", "Title", "Creator", "4", "5", "6", "Amount", "State", "9" };
 			categComboBox.setModel(new DefaultComboBoxModel(options));
 			JButton approveBtn = new JButton("Approve");
 			approveBtn.addActionListener(new ActionListener() {
