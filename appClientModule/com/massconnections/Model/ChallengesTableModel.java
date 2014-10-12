@@ -78,7 +78,7 @@ public class ChallengesTableModel extends GenericTableModel {
 				return "";
 		} else if (columnIndex == 5) {
 			if (challenge.getState() == 0)
-				return "Wating";
+				return "Pending";
 			else if (challenge.getState() == 1)
 				return "Approved";
 			else
@@ -156,7 +156,7 @@ if (challenge.getCategory().getName() != null) {
 						}
 					}
 				} else if (searchIndex == 5) {
-					String x[] = {"DENIED", "WAITING", "APPROVED"};
+					String x[] = {"DENIED", "PENDING", "APPROVED"};
 					if (x[challenge.getState() + 1].toUpperCase().matches(
 							"(.*)" + searchString.toUpperCase() + "(.*)")){
 						resultSearchList.add(challenge);

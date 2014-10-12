@@ -23,6 +23,7 @@ import com.massconnections.Model.ChallengesTableModel;
 import com.massconnections.Model.CrowdTableModel;
 import com.massconnections.Model.GenericTableModel;
 import com.massconnections.Model.ProjectsTableModel;
+import java.awt.Font;
 
 public class ConsultationPanel extends JPanel {
 	private JTextField searchTextField;
@@ -41,6 +42,7 @@ public class ConsultationPanel extends JPanel {
 		JScrollPane scrollPane = new JScrollPane();
 
 		JLabel lblRecherche = new JLabel("Search By:");
+		lblRecherche.setFont(new Font("Arial", Font.PLAIN, 12));
 
 		searchTextField = new JTextField();
 		searchTextField.addKeyListener(new KeyAdapter() {
@@ -57,6 +59,7 @@ public class ConsultationPanel extends JPanel {
 		searchTextField.setColumns(10);
 
 		JButton btnRefresh = new JButton("Refresh");
+		btnRefresh.setFont(new Font("Arial", Font.PLAIN, 12));
 		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				if (ConsultationPanel.this.type == "projects") {
