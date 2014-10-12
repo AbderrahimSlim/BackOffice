@@ -7,6 +7,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -28,6 +29,7 @@ public class ConsultationPanel extends JPanel {
 	private JTable table;
 	private GenericTableModel tableModel;
 	public String type = "";
+	JComboBox categComboBox = new JComboBox();
 
 	/**
 	 * Create the panel.
@@ -45,15 +47,14 @@ public class ConsultationPanel extends JPanel {
 			@Override
 			public void keyReleased(KeyEvent arg0) {
 				tableModel = new ProjectsTableModel();
-				
-				tableModel.initSearch(searchTextField.getText(), 7);
-				
+
+				tableModel.initSearch(searchTextField.getText(),
+						categComboBox.getSelectedIndex());
+
 				table.setModel(tableModel);
 			}
 		});
 		searchTextField.setColumns(10);
-
-		JComboBox categComboBox = new JComboBox();
 
 		JButton btnRefresh = new JButton("Refresh");
 		btnRefresh.addActionListener(new ActionListener() {
@@ -67,42 +68,99 @@ public class ConsultationPanel extends JPanel {
 
 		JPanel optionPanel = new JPanel();
 		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addComponent(optionPanel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
-						.addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 675, Short.MAX_VALUE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(lblRecherche)
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(categComboBox, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.UNRELATED)
-							.addComponent(searchTextField, 117, 117, 117)
-							.addPreferredGap(ComponentPlacement.RELATED, 304, Short.MAX_VALUE)
-							.addComponent(btnRefresh)))
-					.addContainerGap())
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnRefresh)
-						.addComponent(lblRecherche)
-						.addComponent(categComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(searchTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 345, Short.MAX_VALUE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(optionPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGap(5))
-		);
+		groupLayout
+				.setHorizontalGroup(groupLayout
+						.createParallelGroup(Alignment.TRAILING)
+						.addGroup(
+								groupLayout
+										.createSequentialGroup()
+										.addContainerGap()
+										.addGroup(
+												groupLayout
+														.createParallelGroup(
+																Alignment.TRAILING)
+														.addComponent(
+																optionPanel,
+																Alignment.LEADING,
+																GroupLayout.DEFAULT_SIZE,
+																675,
+																Short.MAX_VALUE)
+														.addComponent(
+																scrollPane,
+																Alignment.LEADING,
+																GroupLayout.DEFAULT_SIZE,
+																675,
+																Short.MAX_VALUE)
+														.addGroup(
+																groupLayout
+																		.createSequentialGroup()
+																		.addComponent(
+																				lblRecherche)
+																		.addPreferredGap(
+																				ComponentPlacement.RELATED)
+																		.addComponent(
+																				categComboBox,
+																				GroupLayout.PREFERRED_SIZE,
+																				117,
+																				GroupLayout.PREFERRED_SIZE)
+																		.addPreferredGap(
+																				ComponentPlacement.UNRELATED)
+																		.addComponent(
+																				searchTextField,
+																				117,
+																				117,
+																				117)
+																		.addPreferredGap(
+																				ComponentPlacement.RELATED,
+																				304,
+																				Short.MAX_VALUE)
+																		.addComponent(
+																				btnRefresh)))
+										.addContainerGap()));
+		categComboBox.setMaximumRowCount(20);
+		groupLayout
+				.setVerticalGroup(groupLayout
+						.createParallelGroup(Alignment.LEADING)
+						.addGroup(
+								groupLayout
+										.createSequentialGroup()
+										.addContainerGap()
+										.addGroup(
+												groupLayout
+														.createParallelGroup(
+																Alignment.BASELINE)
+														.addComponent(
+																btnRefresh)
+														.addComponent(
+																lblRecherche)
+														.addComponent(
+																categComboBox,
+																GroupLayout.PREFERRED_SIZE,
+																GroupLayout.DEFAULT_SIZE,
+																GroupLayout.PREFERRED_SIZE)
+														.addComponent(
+																searchTextField,
+																GroupLayout.PREFERRED_SIZE,
+																GroupLayout.DEFAULT_SIZE,
+																GroupLayout.PREFERRED_SIZE))
+										.addPreferredGap(
+												ComponentPlacement.UNRELATED)
+										.addComponent(scrollPane,
+												GroupLayout.DEFAULT_SIZE, 345,
+												Short.MAX_VALUE)
+										.addPreferredGap(
+												ComponentPlacement.RELATED)
+										.addComponent(optionPanel,
+												GroupLayout.PREFERRED_SIZE,
+												GroupLayout.DEFAULT_SIZE,
+												GroupLayout.PREFERRED_SIZE)
+										.addGap(5)));
 
 		table = new JTable();
 		if (type.equals("projects")) {
 			tableModel = new ProjectsTableModel();
+			String[] options = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+			categComboBox.setModel(new DefaultComboBoxModel(options));
 			JButton approveBtn = new JButton("Approve");
 			approveBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -131,6 +189,7 @@ public class ConsultationPanel extends JPanel {
 		}
 		if (type.equals("challenges")) {
 			tableModel = new ChallengesTableModel();
+
 			JButton approveBtn = new JButton("Approve");
 			approveBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -145,11 +204,11 @@ public class ConsultationPanel extends JPanel {
 			JButton denieBtn = new JButton("Denie");
 			denieBtn.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-						ChallengeCrudDelegate.denieChalenge(ChallengeCrudDelegate
-								.getChallenge(((Integer) table.getValueAt(
-										table.getSelectedRow(), 0)).intValue()));
-						tableModel = new ChallengesTableModel();
-						table.setModel(tableModel);
+					ChallengeCrudDelegate.denieChalenge(ChallengeCrudDelegate
+							.getChallenge(((Integer) table.getValueAt(
+									table.getSelectedRow(), 0)).intValue()));
+					tableModel = new ChallengesTableModel();
+					table.setModel(tableModel);
 				}
 			});
 			optionPanel.add(denieBtn);
