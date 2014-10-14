@@ -50,7 +50,7 @@ public class MainFrame extends JFrame {
 		menuPanel.setLayout(new BorderLayout(0, 0));
 		
 		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/Menu Box(statistics).png")));
+		//lblNewLabel.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/Menu Box(statistics).png")));
 		menuPanel.add(lblNewLabel);
 		bodyPanel.setLayout(new BorderLayout(0, 0));
 		contentPane.setLayout(gl_contentPane);

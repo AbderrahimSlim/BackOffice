@@ -9,19 +9,20 @@ import com.massconnections.locator.ServiceLocator;
 
 public class CrowdCrudDelegate {
 
-	private static CrowdCrudEJBRemote proj;
+	private static CrowdCrudEJBRemote crowdEjb;
 
 	private static CrowdCrudEJBRemote getRemoteEJB() {
-		proj = (CrowdCrudEJBRemote) ServiceLocator
+		crowdEjb = (CrowdCrudEJBRemote) ServiceLocator
 				.getInstance()
 				.getProxy(
 						"/massconnection-ejb/CrowdCrudEJB!com.massconnections.Services.CrowdCrudEJBRemote/");
-		return proj;
+		return crowdEjb;
 	}
 
 	
 	
 	public static void addCrowd(Crowd p) {
+		System.out.println("add");
 		getRemoteEJB().addCrowd(p);
 	}
 
@@ -31,12 +32,13 @@ public class CrowdCrudDelegate {
 	}
 
 	
-	public Crowd getById(int id) {
+	public static Crowd getById(int id) {
 		return getRemoteEJB().getById(id);
 	}
 
 	
 	public static void update(Crowd p) {
+		System.out.println("update");
 		getRemoteEJB().update(p);
 	}
 
