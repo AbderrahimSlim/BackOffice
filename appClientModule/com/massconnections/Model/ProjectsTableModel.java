@@ -40,7 +40,7 @@ public class ProjectsTableModel extends GenericTableModel {
 	}
 
 	@Override
-	public Object getElementAt(int row) {
+	public Project getElementAt(int row) {
 		return projectList.get(row);
 	}
 
