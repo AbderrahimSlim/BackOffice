@@ -25,6 +25,7 @@ import com.massconnections.Delegate.ChallengeCrudDelegate;
 import com.massconnections.Delegate.CrowdCrudDelegate;
 import com.massconnections.Delegate.ProjectCrudDelegate;
 import com.massconnections.Domains.Crowd;
+import com.massconnections.Domains.Project;
 import com.massconnections.Model.ChallengesTableModel;
 import com.massconnections.Model.CrowdTableModel;
 import com.massconnections.Model.GenericTableModel;
@@ -33,10 +34,12 @@ import com.massconnections.Model.ProjectsTableModel;
 import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.Color;
 import java.awt.Font;
+
 import javax.swing.ImageIcon;
 
 public class ConsultationPanel extends JPanel {
@@ -342,14 +345,24 @@ public class ConsultationPanel extends JPanel {
 		setLayout(groupLayout);
 
 		table.addMouseListener(new MouseAdapter() {
-			public void mouseClicked(MouseEvent e) {
-				if (e.getClickCount() == 2) {
-					if (ConsultationPanel.type == "projects") {
-						new ProjectView(((ProjectsTableModel) table.getModel())
-								.getElementAt(table.getSelectedRow()))
-								.main(null);
-					}
-
+			public void mouseClicked(MouseEvent evt) {
+				if (evt.getClickCount() == 2) {
+		            if (lsm == null) {
+		                JOptionPane.showMessageDialog(null, "Selectionner une ligne", "Erreur de Selection", JOptionPane.ERROR_MESSAGE);
+		            } else {
+		                int minIndex = lsm.getMinSelectionIndex();
+		                int maxIndex = lsm.getMaxSelectionIndex();
+		                if ((maxIndex - minIndex) == 0) {
+		                    Object element = tableModel.getElementAt(minIndex);
+		                    if (ConsultationPanel.type.equals("projects")) {
+		                        new ProjectView((Project) element).show();
+		                    }else if(ConsultationPanel.type.equals("crowds")){
+		                    	new CrowdForm((Crowd) element).show();
+		                    }
+		                } else {
+		                    JOptionPane.showMessageDialog(null, "Selectionner une seul ligne", "Erreur de Selection", JOptionPane.ERROR_MESSAGE);
+		                }
+		            }
 				}
 			}
 		});
