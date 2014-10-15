@@ -22,6 +22,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ListSelectionModel;
 
 import com.massconnections.Delegate.ChallengeCrudDelegate;
+import com.massconnections.Delegate.CrowdCrudDelegate;
 import com.massconnections.Delegate.ProjectCrudDelegate;
 import com.massconnections.Domains.Crowd;
 import com.massconnections.Model.ChallengesTableModel;
@@ -46,7 +47,6 @@ public class ConsultationPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public ConsultationPanel(String type) {
-
 		this.type = type;
 
 		JScrollPane scrollPane = new JScrollPane();

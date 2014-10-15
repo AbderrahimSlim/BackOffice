@@ -85,6 +85,7 @@ public class CrowdTableModel extends GenericTableModel {
 	// bloc de methodes personalisées
 	@Override
 	public void refresh() {
+		//CrowdCrudDelegate.getById(1);
 		resultSearchList = new ArrayList<Crowd>();
 		this.crowdList = CrowdCrudDelegate.getCrowds();
 	}

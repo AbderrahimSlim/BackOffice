@@ -1,11 +1,10 @@
 package com.massconnections.test;
 
+import java.awt.EventQueue;
+
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
-import com.massconnections.Delegate.CrowdCrudDelegate;
-import com.massconnections.Domains.Crowd;
-import com.massconnections.gui.CrowdForm;
 import com.massconnections.gui.MainFrame;
 
 public class CrwodFormTest {
@@ -27,14 +26,30 @@ public class CrwodFormTest {
 			e.printStackTrace();
 		}
 		
-		 MainFrame cf = new MainFrame(); 
-		 cf.setVisible(true);
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					MainFrame cf = new MainFrame(); 
+					 cf.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+		
 		 
-		/*Crowd c = new Crowd();
-		CrowdCrudDelegate.addCrowd(c);
+		 
+		//Crowd c = new Crowd();
+		
+		//CrowdCrudDelegate.getCrowds();
+		//CrowdCrudDelegate.getById(1);
+
+		
+		
+		//CrowdCrudDelegate.addCrowd(c);
 		//c = CrowdCrudDelegate.getById(1);
 		//System.out.println(c.getFirstName());
-		// CrowdCrudDelegate.findCrowdByLogin("ahm");*/
+		// CrowdCrudDelegate.findCrowdByLogin("ahm");
 
 	}
 
