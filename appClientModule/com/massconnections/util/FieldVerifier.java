@@ -5,15 +5,15 @@ import com.massconnections.Delegate.CrowdCrudDelegate;
 public class FieldVerifier {
 	public static boolean VerifOrdinaryField(String champ, String regex) {
 		if (champ.length() == 0) {
-			errorMsg = "Le champ est obligatroire";
+			errorMsg = "This field is required";
 			return false;
 		}
 		if (champ.length() > 45) {
-			errorMsg = "Le champ est trop long";
+			errorMsg = "this field is too long";
 			return false;
 		}
 		if (!champ.matches(regex)) {
-			errorMsg = "Le champ contient des carractères spéciaux";
+			errorMsg = "this field contains special caractaires";
 			return false;
 		}
 		return true;
@@ -21,7 +21,7 @@ public class FieldVerifier {
 
 	public static boolean isNotNull(Object obj) {
 		if (obj == null) {
-			errorMsg = "Le champ est obligatoire";
+			errorMsg = "This field is required";
 			return false;
 		}
 		return true;
@@ -29,11 +29,11 @@ public class FieldVerifier {
 
 	public static boolean VerifOrdinaryField(String champ) {
 		if (champ.length() == 0) {
-			errorMsg = "Le champ est obligatoire";
+			errorMsg = "This field is required";
 			return false;
 		}
 		if (champ.length() > 45) {
-			errorMsg = "Le champ est trop long";
+			errorMsg = "This field is required";
 			return false;
 		}
 		return true;
@@ -44,28 +44,28 @@ public class FieldVerifier {
 		if (VerifOrdinaryField(champ)) {
 			if (type == 1) { // type login
 				if (existeLogin(champ, currentValue)) {
-					errorMsg = "Ce Pseudo est déjà utilisé";
+					errorMsg = "This username is already used";
 					return false;
 				}
 				return true;
 			} else if (type == 2) {// type mail
 				if (!champ
 						.matches("^[a-zA-Z0-9\\.\\-\\_]+@([a-zA-Z0-9\\-\\_\\.]+\\.)+([a-zA-Z]{2,4})$")) {
-					errorMsg = "Ce Mail est invalide";
+					errorMsg = "Invalid Mail";
 					return false;
 				}
 				if (existeMail(champ, currentValue)) {
-					errorMsg = "Ce Mail est déjà utilisé";
+					errorMsg = "This mail is already used";
 					return false;
 				}
 				return true;
 			} else if (type == 3) {// confirmation mot de passe
 				if (!validePassword(champ, currentValue)) {
-					errorMsg = "Le mot de passe ne corréspond pas";
+					errorMsg = "invalid Password";
 					return false;
 				}
 			} else {
-				System.err.println("type non valide");
+				System.err.println("Invalid Type");
 				return false;
 			}
 		} else {
@@ -78,23 +78,23 @@ public class FieldVerifier {
 		if (VerifOrdinaryField(champ)) {
 			if (type == 1) { // type login
 				if (existeLogin(champ)) {
-					errorMsg = "Ce Pseudo est déjà utilisé";
+					errorMsg = "This username is already used";
 					return false;
 				}
 				return true;
 			} else if (type == 2) {// type mail
 				if (!champ
 						.matches("^[a-zA-Z0-9\\.\\-\\_]+@([a-zA-Z0-9\\-\\_\\.]+\\.)+([a-zA-Z]{2,4})$")) {
-					errorMsg = "Ce Mail est invalide";
+					errorMsg = "Invalid Mail";
 					return false;
 				}
 				if (existeMail(champ)) {
-					errorMsg = "Ce Mail est déjà utilisé";
+					errorMsg = "This Mail is already used";
 					return false;
 				}
 			} else if (type == 3) {// confirmation mot de passe
 				if (champ.length() < 3) {
-					errorMsg = "Le mot de passe est trop court";
+					errorMsg = "Invalid Password";
 					return false;
 				}
 			}
