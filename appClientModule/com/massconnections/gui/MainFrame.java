@@ -114,7 +114,7 @@ public class MainFrame extends JFrame {
 		menuPanel.setLayout(gl_menuPanel);
 		bodyPanel.setLayout(new BorderLayout(0, 0));
 		contentPane.setLayout(gl_contentPane);
-		ConsultationPanel consultationPanel = new ConsultationPanel("crowds");
+		ConsultationPanel consultationPanel = new ConsultationPanel("challenges");
 		consultationPanel.setBackground(Color.WHITE);
 		bodyPanel.add(consultationPanel);
 	}

@@ -24,6 +24,7 @@ import javax.swing.ListSelectionModel;
 import com.massconnections.Delegate.ChallengeCrudDelegate;
 import com.massconnections.Delegate.CrowdCrudDelegate;
 import com.massconnections.Delegate.ProjectCrudDelegate;
+import com.massconnections.Domains.Challenge;
 import com.massconnections.Domains.Crowd;
 import com.massconnections.Domains.Project;
 import com.massconnections.Model.ChallengesTableModel;
@@ -358,6 +359,9 @@ public class ConsultationPanel extends JPanel {
 		                        new ProjectView((Project) element).show();
 		                    }else if(ConsultationPanel.type.equals("crowds")){
 		                    	new CrowdForm((Crowd) element).show();
+		                    }
+		                    else if (ConsultationPanel.type.equals("challenges")) {
+		                    	new ChallengeDetails((Challenge)element).show();
 		                    }
 		                } else {
 		                    JOptionPane.showMessageDialog(null, "Selectionner une seul ligne", "Erreur de Selection", JOptionPane.ERROR_MESSAGE);
