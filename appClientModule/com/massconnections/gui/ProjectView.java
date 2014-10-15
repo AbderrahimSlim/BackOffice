@@ -28,7 +28,7 @@ import com.massconnections.Domains.ProjectDocument;
 import com.massconnections.Model.ProjectDocumentListModel;
 
 public class ProjectView extends JFrame {
-	Project p;
+	static Project p;
 
 	public ProjectView(Project pr) {
 		p = pr;
@@ -364,30 +364,24 @@ public class ProjectView extends JFrame {
 						e.printStackTrace();
 					}
 
-					Project pr = new Project();
-					pr.setAmount(100);
-					pr.setCreationDate(new Date(104, 11, 11));
-					pr.setDeadLine(new Date(2011, 11, 11));
-					pr.setState(0);
-					pr.setDescription("svkhgsdfklghqgkljwhsdflhqgsk\nslfhlqsdgfkjhlqsdgqdglgqdg \n sqdfkghlqsdfjqhlsdg \n jhwsdfkgh;wf");
-					pr.setId(-1);
-					pr.setTitle("jskvdfgljhkkhjfkg");
-					Set<ProjectDocument> pDSet = new HashSet<ProjectDocument>();
-					ProjectDocument d1 = new ProjectDocument();
-					ProjectDocument d2 = new ProjectDocument();
-					ProjectDocument d3 = new ProjectDocument();
-					d1.setName("1");
-					d1.setType('e');
-					d2.setName("1");
-					d2.setType('x');
-					d3.setName("2");
-					d3.setType('x');
-					pDSet.add(d1);
-					pDSet.add(d2);
-					pDSet.add(d3);
-					pr.setProjectDocuments(pDSet);
+					/*
+					 * Project pr = new Project(); pr.setAmount(100);
+					 * pr.setCreationDate(new Date(104, 11, 11));
+					 * pr.setDeadLine(new Date(2011, 11, 11)); pr.setState(0);
+					 * pr.setDescription(
+					 * "svkhgsdfklghqgkljwhsdflhqgsk\nslfhlqsdgfkjhlqsdgqdglgqdg \n sqdfkghlqsdfjqhlsdg \n jhwsdfkgh;wf"
+					 * ); pr.setId(-1); pr.setTitle("jskvdfgljhkkhjfkg");
+					 * Set<ProjectDocument> pDSet = new
+					 * HashSet<ProjectDocument>(); ProjectDocument d1 = new
+					 * ProjectDocument(); ProjectDocument d2 = new
+					 * ProjectDocument(); ProjectDocument d3 = new
+					 * ProjectDocument(); d1.setName("1"); d1.setType('e');
+					 * d2.setName("1"); d2.setType('x'); d3.setName("2");
+					 * d3.setType('x'); pDSet.add(d1); pDSet.add(d2);
+					 * pDSet.add(d3); pr.setProjectDocuments(pDSet);
+					 */
 
-					ProjectView frame = new ProjectView(pr);
+					ProjectView frame = new ProjectView(p);
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
