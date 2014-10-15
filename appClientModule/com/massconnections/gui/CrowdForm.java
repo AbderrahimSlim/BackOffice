@@ -143,6 +143,7 @@ public class CrowdForm extends JFrame {
 						& isValidPass() & isValidDate() & isValidLogin()) {
 					if (!modif) {
 						crowd = new Crowd();
+						crowd.setRole("C");
 					}
 					crowd.setFirstName(firstNameTextField.getText());
 					crowd.setLastName(lastNameTextField.getText());
@@ -706,26 +707,37 @@ public class CrowdForm extends JFrame {
 	}
 
 	private boolean isValidMail() {
-		/*
-		 * if (!modif) { if
-		 * (FieldVerifier.VerifOrdinaryField(emailTextField.getText())) { //
-		 * mailTextfield.getText().length() // > if (FieldVerifier
-		 * .VerifComplexField(emailTextField.getText(), 2)) {
-		 * emailError.setVisible(false); return true; } else {
-		 * emailError.setText(FieldVerifier.getErrorMsg());
-		 * emailError.setVisible(true); return false; } } else {
-		 * emailError.setText(FieldVerifier.getErrorMsg());
-		 * emailError.setVisible(true); return false; } } else { if
-		 * (FieldVerifier.VerifOrdinaryField(emailTextField.getText())) { //
-		 * mailTextfield.getText().length() // > if
-		 * (FieldVerifier.VerifComplexField(emailTextField.getText(),
-		 * crowd.getEmail(), 2)) { emailError.setVisible(false); return true; }
-		 * else { emailError.setText(FieldVerifier.getErrorMsg());
-		 * emailError.setVisible(true); return false; } } else {
-		 * emailError.setText(FieldVerifier.getErrorMsg());
-		 * emailError.setVisible(true); return false; } }
-		 */
-		return true;
+		 if (!modif) {
+	            if (FieldVerifier.VerifOrdinaryField(emailTextField.getText())) { //emailTextField.getText().length() >
+	                if (FieldVerifier.VerifComplexField(emailTextField.getText(), 2)) {
+	                    emailError.setVisible(false);
+	                    return true;
+	                } else {
+	                    emailError.setText(FieldVerifier.getErrorMsg());
+	                    emailError.setVisible(true);
+	                    return false;
+	                }
+	            } else {
+	                emailError.setText(FieldVerifier.getErrorMsg());
+	                emailError.setVisible(true);
+	                return false;
+	            }
+	        } else {
+	            if (FieldVerifier.VerifOrdinaryField(emailTextField.getText())) { //emailTextField.getText().length() >
+	                if (FieldVerifier.VerifComplexField(emailTextField.getText(), crowd.getEmail(), 2)) {
+	                    emailError.setVisible(false);
+	                    return true;
+	                } else {
+	                    emailError.setText(FieldVerifier.getErrorMsg());
+	                    emailError.setVisible(true);
+	                    return false;
+	                }
+	            } else {
+	                emailError.setText(FieldVerifier.getErrorMsg());
+	                emailError.setVisible(true);
+	                return false;
+	            }
+	        }
 	}
 
 	/**

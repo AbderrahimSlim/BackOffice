@@ -17,6 +17,5 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jBossLibs"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jboss-client-lib"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/massconnectionsLibs"/>
-	<classpathentry kind="lib" path="E:/MyWrkSpcs/Pidev/BackOffice/lib/jcalendar-1.4.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

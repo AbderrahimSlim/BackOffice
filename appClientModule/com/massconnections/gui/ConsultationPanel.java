@@ -33,6 +33,8 @@ import com.massconnections.Model.ProjectsTableModel;
 import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class ConsultationPanel extends JPanel {
 	private JTextField searchTextField;
@@ -202,8 +204,8 @@ public class ConsultationPanel extends JPanel {
 		table = new JTable();
 		if (type.equals("projects")) {
 			tableModel = new ProjectsTableModel();
-			String[] options = { "Id", "Title", "Creator", "4", "5", "6",
-					"Amount", "State", "9" };
+			String[] options =  { "Id", "Title", "Creator", "Description",
+					"Creation Date", "Deadline", "Amount", "State", "Category" };
 			categComboBox.setModel(new DefaultComboBoxModel(options));
 			btnLeft.setText("Approve");
 			btnLeft.addActionListener(new ActionListener() {
@@ -228,6 +230,11 @@ public class ConsultationPanel extends JPanel {
 
 		}
 		if (type.equals("crowds")) {
+			
+			String[] options =  { "First Name", "Last Name", "Age", "sex", "Login",
+					"Email", "Projects", "Challenges" };
+			categComboBox.setModel(new DefaultComboBoxModel(options));
+			
 			btnLeft.setText("Add");
 			btnLeft.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -238,6 +245,7 @@ public class ConsultationPanel extends JPanel {
 			btnMiddle.setText("Modify");
 			btnMiddle.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
+					lsm.getMinSelectionIndex();
 					if (lsm == null) {
 						JOptionPane.showMessageDialog(null,
 								"Selectionner une ligne",
@@ -249,47 +257,19 @@ public class ConsultationPanel extends JPanel {
 						if ((maxIndex - minIndex) == 0) {
 							Object element = tableModel.getElementAt(minIndex);
 							new CrowdForm((Crowd) element).show();
+						} else {
+							JOptionPane.showMessageDialog(null,
+									"Selectionner une seul ligne",
+									"Erreur de Selection",
+									JOptionPane.ERROR_MESSAGE);
 						}
-						JOptionPane.showMessageDialog(null,
-								"Selectionner une seul ligne",
-								"Erreur de Selection",
-								JOptionPane.ERROR_MESSAGE);
 					}
 
 				}
 			});
 
-			btnRight.setText("Delete");
-			btnRight.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					if (lsm == null) {
-						JOptionPane.showMessageDialog(null,
-								"Selectionner au moin une ligne",
-								"Erreur de Selection",
-								JOptionPane.ERROR_MESSAGE);
-					} else {
-						int p = JOptionPane
-								.showConfirmDialog(
-										null,
-										"!voulez-vous vraiment supprimer  cet élément?",
-										"Supprimer", JOptionPane.YES_NO_OPTION);
-						if (p == 0) {
-							int minIndex = lsm.getMinSelectionIndex();
-							int maxIndex = lsm.getMaxSelectionIndex();
-							List elements = new ArrayList();
-							for (int i = minIndex; i <= maxIndex; i++) {
-								if (lsm.isSelectedIndex(i)) {
-									Object element = tableModel.getElementAt(i);
-									elements.add(element);
-								}
-							}
-							tableModel.removeRows(elements);
-							tableModel.fireTableDataChanged();
-						}
-					}
-				}
-			});
-
+			
+			
 			tableModel = new CrowdTableModel();
 		}
 		if (type.equals("challenges")) {
@@ -320,10 +300,44 @@ public class ConsultationPanel extends JPanel {
 				}
 			});
 		}
+		
+		btnRight.setText("Delete");
+		btnRight.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				if (lsm == null) {
+					JOptionPane.showMessageDialog(null,
+							"Selectionner au moin une ligne",
+							"Erreur de Selection",
+							JOptionPane.ERROR_MESSAGE);
+				} else {
+					int p = JOptionPane
+							.showConfirmDialog(
+									null,
+									"!voulez-vous vraiment supprimer  cet élément?",
+									"Supprimer", JOptionPane.YES_NO_OPTION);
+					if (p == 0) {
+						int minIndex = lsm.getMinSelectionIndex();
+						int maxIndex = lsm.getMaxSelectionIndex();
+						List elements = new ArrayList();
+						for (int i = minIndex; i <= maxIndex; i++) {
+							if (lsm.isSelectedIndex(i)) {
+								Object element = tableModel.getElementAt(i);
+								elements.add(element);
+							}
+						}
+						tableModel.removeRows(elements);
+						tableModel.fireTableDataChanged();
+					}
+				}
+			}
+		});
+		
 		table.setModel(tableModel);
 		table.setAutoCreateRowSorter(true);
 		table.getSelectionModel().addListSelectionListener(
 				new ConsultationTableListener());
+		
+		
 		scrollPane.setViewportView(table);
 		setLayout(groupLayout);
 

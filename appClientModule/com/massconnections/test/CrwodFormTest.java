@@ -37,6 +37,9 @@ public class CrwodFormTest {
 			}
 		});
 		
+		
+		/*MainFrame cf = new MainFrame(); 
+		 cf.setVisible(true);*/
 		 
 		 
 		//Crowd c = new Crowd();
