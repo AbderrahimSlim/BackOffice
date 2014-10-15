@@ -40,7 +40,7 @@ public class ConsultationPanel extends JPanel {
 	private JTextField searchTextField;
 	private JTable table;
 	public static GenericTableModel tableModel;
-	public String type = "";
+	public static String type = "";
 	JComboBox categComboBox = new JComboBox();
 	private ListSelectionModel lsm;
 	private JButton btnRight;
@@ -204,7 +204,7 @@ public class ConsultationPanel extends JPanel {
 		table = new JTable();
 		if (type.equals("projects")) {
 			tableModel = new ProjectsTableModel();
-			String[] options =  { "Id", "Title", "Creator", "Description",
+			String[] options = { "Id", "Title", "Creator", "Description",
 					"Creation Date", "Deadline", "Amount", "State", "Category" };
 			categComboBox.setModel(new DefaultComboBoxModel(options));
 			btnLeft.setText("Approve");
@@ -230,11 +230,11 @@ public class ConsultationPanel extends JPanel {
 
 		}
 		if (type.equals("crowds")) {
-			
-			String[] options =  { "First Name", "Last Name", "Age", "sex", "Login",
-					"Email", "Projects", "Challenges" };
+
+			String[] options = { "First Name", "Last Name", "Age", "sex",
+					"Login", "Email", "Projects", "Challenges" };
 			categComboBox.setModel(new DefaultComboBoxModel(options));
-			
+
 			btnLeft.setText("Add");
 			btnLeft.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
@@ -268,8 +268,6 @@ public class ConsultationPanel extends JPanel {
 				}
 			});
 
-			
-			
 			tableModel = new CrowdTableModel();
 		}
 		if (type.equals("challenges")) {
@@ -300,21 +298,18 @@ public class ConsultationPanel extends JPanel {
 				}
 			});
 		}
-		
+
 		btnRight.setText("Delete");
 		btnRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (lsm == null) {
 					JOptionPane.showMessageDialog(null,
 							"Selectionner au moin une ligne",
-							"Erreur de Selection",
-							JOptionPane.ERROR_MESSAGE);
+							"Erreur de Selection", JOptionPane.ERROR_MESSAGE);
 				} else {
-					int p = JOptionPane
-							.showConfirmDialog(
-									null,
-									"!voulez-vous vraiment supprimer  cet élément?",
-									"Supprimer", JOptionPane.YES_NO_OPTION);
+					int p = JOptionPane.showConfirmDialog(null,
+							"!voulez-vous vraiment supprimer  cet élément?",
+							"Supprimer", JOptionPane.YES_NO_OPTION);
 					if (p == 0) {
 						int minIndex = lsm.getMinSelectionIndex();
 						int maxIndex = lsm.getMaxSelectionIndex();
@@ -331,15 +326,27 @@ public class ConsultationPanel extends JPanel {
 				}
 			}
 		});
-		
+
 		table.setModel(tableModel);
 		table.setAutoCreateRowSorter(true);
 		table.getSelectionModel().addListSelectionListener(
 				new ConsultationTableListener());
-		
-		
+
 		scrollPane.setViewportView(table);
 		setLayout(groupLayout);
+
+		table.addMouseListener(new MouseAdapter() {
+			public void mouseClicked(MouseEvent e) {
+				if (e.getClickCount() == 2) {
+					if (ConsultationPanel.type == "projects") {
+						new ProjectView(((ProjectsTableModel) table.getModel())
+								.getElementAt(table.getSelectedRow()))
+								.main(null);
+					}
+
+				}
+			}
+		});
 
 	}
 
