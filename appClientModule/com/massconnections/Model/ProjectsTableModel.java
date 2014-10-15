@@ -156,16 +156,29 @@ public class ProjectsTableModel extends GenericTableModel {
 						}
 					}
 
-				}/*
-				 * else if (searchIndex == 4) { if (project.getLogin() != null)
-				 * { if (project .getLogin() .toUpperCase() .matches( "(.*)" +
-				 * searchString.toUpperCase() + "(.*)")) {
-				 * resultSearchList.add(project); } } } else if (searchIndex ==
-				 * 5) { if (project.getEmail() != null) { if (project
-				 * .getEmail() .toUpperCase() .matches( "(.*)" +
-				 * searchString.toUpperCase() + "(.*)")) {
-				 * resultSearchList.add(project); } } }
-				 */else if (searchIndex == 6) {
+				} else if (searchIndex == 4) {
+					if (project.getCreationDate() != null) {
+						if (project
+								.getCreationDate().toLocaleString()
+								.toUpperCase()
+								.matches(
+										"(.*)" + searchString.toUpperCase()
+												+ "(.*)")) {
+							resultSearchList.add(project);
+						}
+					}
+				} else if (searchIndex == 5) {
+					if (project.getDeadLine() != null) {
+						if (project
+								.getDeadLine().toLocaleString()
+								.toUpperCase()
+								.matches(
+										"(.*)" + searchString.toUpperCase()
+												+ "(.*)")) {
+							resultSearchList.add(project);
+						}
+					}
+				} else if (searchIndex == 6) {
 					if (project.getAmount() + "" != null) {
 						if ((project.getAmount() + "").toUpperCase().matches(
 								"(.*)" + searchString.toUpperCase() + "(.*)")) {
@@ -173,9 +186,9 @@ public class ProjectsTableModel extends GenericTableModel {
 						}
 					}
 				} else if (searchIndex == 7) {
-					String x[] = {"DENIED", "PENDING", "APPROVED"};
+					String x[] = { "DENIED", "PENDING", "APPROVED" };
 					if (x[project.getState() + 1].toUpperCase().matches(
-							"(.*)" + searchString.toUpperCase() + "(.*)")){
+							"(.*)" + searchString.toUpperCase() + "(.*)")) {
 						resultSearchList.add(project);
 					}
 				}

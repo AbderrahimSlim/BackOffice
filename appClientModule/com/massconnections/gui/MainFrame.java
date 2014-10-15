@@ -21,11 +21,13 @@ import javax.swing.BoxLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.FlowLayout;
 import javax.swing.JButton;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class MainFrame extends JFrame {
 
-	private JPanel contentPane;
-
+	public static JPanel contentPane;
+	public static JPanel bodyPanel;
 	
 
 	/**
@@ -43,7 +45,7 @@ public class MainFrame extends JFrame {
 		JPanel menuPanel = new JPanel();
 		menuPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		
-		JPanel bodyPanel = new JPanel();
+		final JPanel bodyPanel = new JPanel();
 		bodyPanel.setBorder(new LineBorder(new Color(0, 0, 0)));
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
@@ -63,12 +65,39 @@ public class MainFrame extends JFrame {
 		lblMenu.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/menu.png")));
 		
 		JButton labelProject = new JButton("");
+		labelProject.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				bodyPanel.removeAll();
+				bodyPanel.add(new ConsultationPanel("projects"));
+                repaint();
+                printAll(getGraphics());//Extort print all content
+			}
+		});
 		labelProject.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/project.png")));
 		
 		JButton labelChallenge = new JButton("");
+		labelChallenge.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				bodyPanel.removeAll();
+				bodyPanel.add(new ConsultationPanel("challenges"));
+                repaint();
+                printAll(getGraphics());//Extort print all content
+			}
+		});
 		labelChallenge.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/challenge.png")));
 		
 		JButton labelUser = new JButton("");
+		labelUser.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				bodyPanel.removeAll();
+				bodyPanel.add(new ConsultationPanel("crowds"));
+                repaint();
+                printAll(getGraphics());//Extort print all content
+			}
+		});
 		labelUser.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/users.png")));
 		
 		JButton labelStat = new JButton("");
@@ -114,7 +143,7 @@ public class MainFrame extends JFrame {
 		menuPanel.setLayout(gl_menuPanel);
 		bodyPanel.setLayout(new BorderLayout(0, 0));
 		contentPane.setLayout(gl_contentPane);
-		ConsultationPanel consultationPanel = new ConsultationPanel("challenges");
+		ConsultationPanel consultationPanel = new ConsultationPanel("projects");
 		consultationPanel.setBackground(Color.WHITE);
 		bodyPanel.add(consultationPanel);
 	}
