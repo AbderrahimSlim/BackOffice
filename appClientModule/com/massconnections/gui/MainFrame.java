@@ -20,6 +20,7 @@ import com.jgoodies.forms.layout.RowSpec;
 import javax.swing.BoxLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import java.awt.FlowLayout;
+import javax.swing.JButton;
 
 public class MainFrame extends JFrame {
 
@@ -33,8 +34,9 @@ public class MainFrame extends JFrame {
 	public MainFrame() {
 		setTitle("MassConnections");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 870, 486);
+		setBounds(100, 100, 967, 503);
 		contentPane = new JPanel();
+		contentPane.setBackground(new Color(27,188,155));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		
@@ -52,66 +54,68 @@ public class MainFrame extends JFrame {
 					.addComponent(bodyPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
-			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addComponent(bodyPanel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
-				.addComponent(menuPanel, GroupLayout.PREFERRED_SIZE, 441, Short.MAX_VALUE)
+			gl_contentPane.createParallelGroup(Alignment.TRAILING)
+				.addComponent(menuPanel, GroupLayout.PREFERRED_SIZE, 445, Short.MAX_VALUE)
+				.addComponent(bodyPanel, GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
 		);
 		
-		JLabel lblMenu = new JLabel("");
+		JButton lblMenu = new JButton("");
 		lblMenu.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/menu.png")));
 		
-		JLabel labelProject = new JLabel("");
+		JButton labelProject = new JButton("");
 		labelProject.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/project.png")));
 		
-		JLabel labelChallenge = new JLabel("");
+		JButton labelChallenge = new JButton("");
 		labelChallenge.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/challenge.png")));
 		
-		JLabel labelUser = new JLabel("");
+		JButton labelUser = new JButton("");
 		labelUser.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/users.png")));
 		
-		JLabel labelStat = new JLabel("");
+		JButton labelStat = new JButton("");
 		labelStat.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/stat.png")));
 		
-		JLabel labelMessage = new JLabel("");
+		JButton labelMessage = new JButton("");
 		labelMessage.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/msg.png")));
 		
-		JLabel lblLogout = new JLabel("");
+		JButton lblLogout = new JButton("");
 		lblLogout.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/signout.png")));
 		GroupLayout gl_menuPanel = new GroupLayout(menuPanel);
 		gl_menuPanel.setHorizontalGroup(
 			gl_menuPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_menuPanel.createSequentialGroup()
 					.addGroup(gl_menuPanel.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(labelProject, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+						.addComponent(labelProject, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 219, Short.MAX_VALUE)
 						.addComponent(labelUser, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 218, Short.MAX_VALUE)
 						.addComponent(labelMessage, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 218, Short.MAX_VALUE)
-						.addComponent(lblMenu, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(labelChallenge, GroupLayout.PREFERRED_SIZE, 218, Short.MAX_VALUE)
-						.addComponent(lblLogout, GroupLayout.PREFERRED_SIZE, 219, GroupLayout.PREFERRED_SIZE)
-						.addComponent(labelStat, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+						.addComponent(lblLogout, GroupLayout.PREFERRED_SIZE, 219, Short.MAX_VALUE)
+						.addComponent(labelStat, GroupLayout.PREFERRED_SIZE, 219, Short.MAX_VALUE)
+						.addComponent(lblMenu, 0, 0, Short.MAX_VALUE))
+					.addContainerGap(1, Short.MAX_VALUE))
 		);
 		gl_menuPanel.setVerticalGroup(
 			gl_menuPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_menuPanel.createSequentialGroup()
 					.addComponent(lblMenu, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-					.addGap(0)
+					.addGap(1)
 					.addComponent(labelProject, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
 					.addGap(1)
 					.addComponent(labelChallenge, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
 					.addGap(1)
 					.addComponent(labelUser, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
 					.addGap(1)
-					.addComponent(labelStat, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)
+					.addComponent(labelStat, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
 					.addGap(1)
 					.addComponent(labelMessage, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
 					.addGap(1)
 					.addComponent(lblLogout, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(1, Short.MAX_VALUE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		menuPanel.setLayout(gl_menuPanel);
 		bodyPanel.setLayout(new BorderLayout(0, 0));
 		contentPane.setLayout(gl_contentPane);
-		bodyPanel.add(new ConsultationPanel("projects"));
+		ConsultationPanel consultationPanel = new ConsultationPanel("crowds");
+		consultationPanel.setBackground(Color.WHITE);
+		bodyPanel.add(consultationPanel);
 	}
 }

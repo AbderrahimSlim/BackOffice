@@ -35,6 +35,9 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.ImageIcon;
 
 public class ConsultationPanel extends JPanel {
 	private JTextField searchTextField;
@@ -49,6 +52,7 @@ public class ConsultationPanel extends JPanel {
 	 * Create the panel.
 	 */
 	public ConsultationPanel(String type) {
+		setBackground(Color.WHITE);
 		this.type = type;
 
 		JScrollPane scrollPane = new JScrollPane();
@@ -76,6 +80,7 @@ public class ConsultationPanel extends JPanel {
 		});
 
 		JPanel optionPanel = new JPanel();
+		optionPanel.setBackground(Color.WHITE);
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout
 				.setHorizontalGroup(groupLayout
@@ -173,35 +178,38 @@ public class ConsultationPanel extends JPanel {
 		JButton btnMiddle = new JButton();
 
 		btnRight = new JButton();
+		btnRight.setFont(new Font("Tahoma", Font.PLAIN, 11));
+		btnRight.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/delete user.png")));
 		GroupLayout gl_optionPanel = new GroupLayout(optionPanel);
-		gl_optionPanel.setHorizontalGroup(gl_optionPanel.createParallelGroup(
-				Alignment.LEADING).addGroup(
-				gl_optionPanel.createSequentialGroup().addContainerGap()
+		gl_optionPanel.setHorizontalGroup(
+			gl_optionPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_optionPanel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnLeft)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnMiddle)
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(btnRight, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(259, Short.MAX_VALUE))
+		);
+		gl_optionPanel.setVerticalGroup(
+			gl_optionPanel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_optionPanel.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(gl_optionPanel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(btnLeft)
-						.addPreferredGap(ComponentPlacement.UNRELATED)
 						.addComponent(btnMiddle)
-						.addPreferredGap(ComponentPlacement.UNRELATED)
-						.addComponent(btnRight)
-						.addContainerGap(378, Short.MAX_VALUE)));
-		gl_optionPanel.setVerticalGroup(gl_optionPanel.createParallelGroup(
-				Alignment.LEADING)
-				.addGroup(
-						gl_optionPanel
-								.createSequentialGroup()
-								.addContainerGap()
-								.addGroup(
-										gl_optionPanel
-												.createParallelGroup(
-														Alignment.BASELINE)
-												.addComponent(btnLeft)
-												.addComponent(btnMiddle)
-												.addComponent(btnRight))
-								.addContainerGap(GroupLayout.DEFAULT_SIZE,
-										Short.MAX_VALUE)));
+						.addComponent(btnRight, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
 		optionPanel.setLayout(gl_optionPanel);
 		categComboBox.setMaximumRowCount(20);
 
 		table = new JTable();
+		table.getTableHeader().setFont(new Font("Tahoma", Font.PLAIN, 14));
+		
+		//table.getTableHeader().setBackground(new Color(27,188,155));
+		table.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		if (type.equals("projects")) {
 			tableModel = new ProjectsTableModel();
 			String[] options = { "Id", "Title", "Creator", "Description",
@@ -298,8 +306,6 @@ public class ConsultationPanel extends JPanel {
 				}
 			});
 		}
-
-		btnRight.setText("Delete");
 		btnRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (lsm == null) {
