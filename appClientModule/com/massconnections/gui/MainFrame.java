@@ -33,7 +33,7 @@ public class MainFrame extends JFrame {
 	public MainFrame() {
 		setTitle("MassConnections");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 870, 500);
+		setBounds(100, 100, 870, 486);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -47,62 +47,67 @@ public class MainFrame extends JFrame {
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(menuPanel, GroupLayout.PREFERRED_SIZE, 220, GroupLayout.PREFERRED_SIZE)
-					.addGap(10)
-					.addComponent(bodyPanel, GroupLayout.PREFERRED_SIZE, 610, Short.MAX_VALUE))
+					.addComponent(menuPanel, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
+					.addGap(1)
+					.addComponent(bodyPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
-				.addComponent(menuPanel, GroupLayout.PREFERRED_SIZE, 451, Short.MAX_VALUE)
 				.addComponent(bodyPanel, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
+				.addComponent(menuPanel, GroupLayout.PREFERRED_SIZE, 441, Short.MAX_VALUE)
 		);
 		
 		JLabel lblMenu = new JLabel("");
+		lblMenu.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/menu.png")));
 		
-		JLabel label = new JLabel("");
+		JLabel labelProject = new JLabel("");
+		labelProject.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/project.png")));
 		
-		JLabel label_1 = new JLabel("");
+		JLabel labelChallenge = new JLabel("");
+		labelChallenge.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/challenge.png")));
 		
-		JLabel label_2 = new JLabel("");
+		JLabel labelUser = new JLabel("");
+		labelUser.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/users.png")));
 		
-		JLabel label_3 = new JLabel("");
+		JLabel labelStat = new JLabel("");
+		labelStat.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/stat.png")));
 		
-		JLabel label_4 = new JLabel("");
+		JLabel labelMessage = new JLabel("");
+		labelMessage.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/msg.png")));
+		
+		JLabel lblLogout = new JLabel("");
+		lblLogout.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/signout.png")));
 		GroupLayout gl_menuPanel = new GroupLayout(menuPanel);
 		gl_menuPanel.setHorizontalGroup(
 			gl_menuPanel.createParallelGroup(Alignment.LEADING)
-				.addComponent(lblMenu, GroupLayout.DEFAULT_SIZE, 238, Short.MAX_VALUE)
 				.addGroup(gl_menuPanel.createSequentialGroup()
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 218, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-				.addGroup(gl_menuPanel.createSequentialGroup()
-					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 218, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-				.addGroup(gl_menuPanel.createSequentialGroup()
-					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 218, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-				.addGroup(gl_menuPanel.createSequentialGroup()
-					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 218, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
-				.addGroup(gl_menuPanel.createSequentialGroup()
-					.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 218, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap())
+					.addGroup(gl_menuPanel.createParallelGroup(Alignment.LEADING, false)
+						.addComponent(labelProject, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 218, Short.MAX_VALUE)
+						.addComponent(labelUser, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 218, Short.MAX_VALUE)
+						.addComponent(labelMessage, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 218, Short.MAX_VALUE)
+						.addComponent(lblMenu, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(labelChallenge, GroupLayout.PREFERRED_SIZE, 218, Short.MAX_VALUE)
+						.addComponent(lblLogout, GroupLayout.PREFERRED_SIZE, 219, GroupLayout.PREFERRED_SIZE)
+						.addComponent(labelStat, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		gl_menuPanel.setVerticalGroup(
 			gl_menuPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_menuPanel.createSequentialGroup()
 					.addComponent(lblMenu, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(label, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(36, Short.MAX_VALUE))
+					.addGap(0)
+					.addComponent(labelProject, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+					.addGap(1)
+					.addComponent(labelChallenge, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+					.addGap(1)
+					.addComponent(labelUser, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+					.addGap(1)
+					.addComponent(labelStat, GroupLayout.PREFERRED_SIZE, 58, GroupLayout.PREFERRED_SIZE)
+					.addGap(1)
+					.addComponent(labelMessage, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+					.addGap(1)
+					.addComponent(lblLogout, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(1, Short.MAX_VALUE))
 		);
 		menuPanel.setLayout(gl_menuPanel);
 		bodyPanel.setLayout(new BorderLayout(0, 0));
