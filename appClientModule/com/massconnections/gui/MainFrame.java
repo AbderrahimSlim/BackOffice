@@ -66,7 +66,7 @@ public class MainFrame extends JFrame {
 				bodyPanel.removeAll();
 				bodyPanel.add(new ConsultationPanel("projects"));
                 repaint();
-                printAll(getGraphics());//Extort print all content
+                bodyPanel.revalidate();
 			}
 		});
 		labelProject.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/project.png")));
@@ -78,7 +78,7 @@ public class MainFrame extends JFrame {
 				bodyPanel.removeAll();
 				bodyPanel.add(new ConsultationPanel("challenges"));
                 repaint();
-                printAll(getGraphics());//Extort print all content
+                bodyPanel.revalidate();
 			}
 		});
 		labelChallenge.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/challenge.png")));
@@ -90,7 +90,7 @@ public class MainFrame extends JFrame {
 				bodyPanel.removeAll();
 				bodyPanel.add(new ConsultationPanel("crowds"));
                 repaint();
-                printAll(getGraphics());//Extort print all content
+                bodyPanel.revalidate();
 			}
 		});
 		labelUser.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/users.png")));
