@@ -2,27 +2,21 @@ package com.massconnections.gui;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-
-import com.massconnections.Delegate.CrowdCrudDelegate;
-import com.jgoodies.forms.layout.FormLayout;
-import com.jgoodies.forms.layout.ColumnSpec;
-import com.jgoodies.forms.factories.FormFactory;
-import com.jgoodies.forms.layout.RowSpec;
-import javax.swing.BoxLayout;
 import javax.swing.LayoutStyle.ComponentPlacement;
-import java.awt.FlowLayout;
-import javax.swing.JButton;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class MainFrame extends JFrame {
 
@@ -36,7 +30,7 @@ public class MainFrame extends JFrame {
 	public MainFrame() {
 		setTitle("MassConnections");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 967, 503);
+		setBounds(100, 100, 967, 500);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(27,188,155));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -51,20 +45,21 @@ public class MainFrame extends JFrame {
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_contentPane.createSequentialGroup()
-					.addComponent(menuPanel, GroupLayout.PREFERRED_SIZE, 222, GroupLayout.PREFERRED_SIZE)
-					.addGap(1)
-					.addComponent(bodyPanel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addComponent(menuPanel, GroupLayout.PREFERRED_SIZE, 213, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(bodyPanel, GroupLayout.DEFAULT_SIZE, 722, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
 			gl_contentPane.createParallelGroup(Alignment.TRAILING)
-				.addComponent(menuPanel, GroupLayout.PREFERRED_SIZE, 445, Short.MAX_VALUE)
-				.addComponent(bodyPanel, GroupLayout.DEFAULT_SIZE, 445, Short.MAX_VALUE)
+				.addComponent(bodyPanel, GroupLayout.DEFAULT_SIZE, 451, Short.MAX_VALUE)
+				.addComponent(menuPanel, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 451, Short.MAX_VALUE)
 		);
 		
-		JButton lblMenu = new JButton("");
+		JLabel lblMenu = new JLabel("");
 		lblMenu.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/menu.png")));
 		
 		JButton labelProject = new JButton("");
+		
 		labelProject.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent arg0) {
@@ -110,17 +105,17 @@ public class MainFrame extends JFrame {
 		lblLogout.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/signout.png")));
 		GroupLayout gl_menuPanel = new GroupLayout(menuPanel);
 		gl_menuPanel.setHorizontalGroup(
-			gl_menuPanel.createParallelGroup(Alignment.LEADING)
+			gl_menuPanel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_menuPanel.createSequentialGroup()
-					.addGroup(gl_menuPanel.createParallelGroup(Alignment.LEADING, false)
-						.addComponent(labelProject, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 219, Short.MAX_VALUE)
-						.addComponent(labelUser, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 218, Short.MAX_VALUE)
-						.addComponent(labelMessage, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 218, Short.MAX_VALUE)
-						.addComponent(labelChallenge, GroupLayout.PREFERRED_SIZE, 218, Short.MAX_VALUE)
-						.addComponent(lblLogout, GroupLayout.PREFERRED_SIZE, 219, Short.MAX_VALUE)
-						.addComponent(labelStat, GroupLayout.PREFERRED_SIZE, 219, Short.MAX_VALUE)
-						.addComponent(lblMenu, 0, 0, Short.MAX_VALUE))
-					.addContainerGap(1, Short.MAX_VALUE))
+					.addGroup(gl_menuPanel.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lblLogout, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE)
+						.addComponent(labelMessage, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE)
+						.addComponent(labelStat, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE)
+						.addComponent(labelUser, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE)
+						.addComponent(labelChallenge, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE)
+						.addComponent(labelProject, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE)
+						.addComponent(lblMenu, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE))
+					.addContainerGap())
 		);
 		gl_menuPanel.setVerticalGroup(
 			gl_menuPanel.createParallelGroup(Alignment.LEADING)
@@ -136,15 +131,13 @@ public class MainFrame extends JFrame {
 					.addComponent(labelStat, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
 					.addGap(1)
 					.addComponent(labelMessage, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-					.addGap(1)
+					.addPreferredGap(ComponentPlacement.RELATED, 1, Short.MAX_VALUE)
 					.addComponent(lblLogout, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addGap(1))
 		);
 		menuPanel.setLayout(gl_menuPanel);
 		bodyPanel.setLayout(new BorderLayout(0, 0));
 		contentPane.setLayout(gl_contentPane);
-		ConsultationPanel consultationPanel = new ConsultationPanel("projects");
-		consultationPanel.setBackground(Color.WHITE);
-		bodyPanel.add(consultationPanel);
+		
 	}
 }

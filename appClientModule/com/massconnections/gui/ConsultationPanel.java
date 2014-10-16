@@ -210,10 +210,7 @@ public class ConsultationPanel extends JPanel {
 		categComboBox.setMaximumRowCount(20);
 
 		table = new JTable();
-		table.getTableHeader().setFont(new Font("Tahoma", Font.PLAIN, 14));
 		
-		//table.getTableHeader().setBackground(new Color(27,188,155));
-		table.setFont(new Font("Tahoma", Font.PLAIN, 13));
 		if (type.equals("projects")) {
 			tableModel = new ProjectsTableModel();
 			String[] options = { "Id", "Title", "Creator", "Description",
