@@ -257,8 +257,8 @@ public class ConsultationPanel extends JPanel {
 					lsm.getMinSelectionIndex();
 					if (lsm == null) {
 						JOptionPane.showMessageDialog(null,
-								"Selectionner une ligne",
-								"Erreur de Selection",
+								"Select a row",
+								"Error",
 								JOptionPane.ERROR_MESSAGE);
 					} else {
 						int minIndex = lsm.getMinSelectionIndex();
@@ -268,8 +268,8 @@ public class ConsultationPanel extends JPanel {
 							new CrowdForm((Crowd) element).show();
 						} else {
 							JOptionPane.showMessageDialog(null,
-									"Selectionner une seul ligne",
-									"Erreur de Selection",
+									"Select a row",
+									"Error",
 									JOptionPane.ERROR_MESSAGE);
 						}
 					}
@@ -311,12 +311,12 @@ public class ConsultationPanel extends JPanel {
 			public void actionPerformed(ActionEvent e) {
 				if (lsm == null) {
 					JOptionPane.showMessageDialog(null,
-							"Selectionner au moin une ligne",
-							"Erreur de Selection", JOptionPane.ERROR_MESSAGE);
+							"At least select one row",
+							"Error", JOptionPane.ERROR_MESSAGE);
 				} else {
 					int p = JOptionPane.showConfirmDialog(null,
-							"!voulez-vous vraiment supprimer  cet élément?",
-							"Supprimer", JOptionPane.YES_NO_OPTION);
+							"Are you sure you want to delete this element",
+							"Delete", JOptionPane.YES_NO_OPTION);
 					if (p == 0) {
 						int minIndex = lsm.getMinSelectionIndex();
 						int maxIndex = lsm.getMaxSelectionIndex();
@@ -346,7 +346,7 @@ public class ConsultationPanel extends JPanel {
 			public void mouseClicked(MouseEvent evt) {
 				if (evt.getClickCount() == 2) {
 		            if (lsm == null) {
-		                JOptionPane.showMessageDialog(null, "Selectionner une ligne", "Erreur de Selection", JOptionPane.ERROR_MESSAGE);
+		                JOptionPane.showMessageDialog(null, "Select a row", "Error", JOptionPane.ERROR_MESSAGE);
 		            } else {
 		                int minIndex = lsm.getMinSelectionIndex();
 		                int maxIndex = lsm.getMaxSelectionIndex();
@@ -361,7 +361,7 @@ public class ConsultationPanel extends JPanel {
 		                    	new ChallengeDetails((Challenge)element).show();
 		                    }
 		                } else {
-		                    JOptionPane.showMessageDialog(null, "Selectionner une seul ligne", "Erreur de Selection", JOptionPane.ERROR_MESSAGE);
+		                    JOptionPane.showMessageDialog(null, "Select a row", "Error", JOptionPane.ERROR_MESSAGE);
 		                }
 		            }
 				}

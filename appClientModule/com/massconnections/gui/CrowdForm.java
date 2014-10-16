@@ -198,7 +198,7 @@ public class CrowdForm extends JFrame {
 		emailError.setForeground(Color.RED);
 		emailError.setFont(new Font("Tahoma", Font.BOLD, 11));
 
-		birthDateError = new JLabel("error");
+		birthDateError = new JLabel("Invalid Birth Date");
 		birthDateError.setVisible(false);
 		birthDateError.setForeground(Color.RED);
 		birthDateError.setFont(new Font("Tahoma", Font.BOLD, 11));
