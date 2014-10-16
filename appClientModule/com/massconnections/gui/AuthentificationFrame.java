@@ -36,7 +36,7 @@ public class AuthentificationFrame extends JFrame {
 	 */
 	public AuthentificationFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 352, 419);
+		setBounds(100, 100, 349, 419);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -49,7 +49,7 @@ public class AuthentificationFrame extends JFrame {
 				Crowd crowd = CrowdCrudDelegate.authentification(Login.getText(), Password.getText());
 				if (crowd!=null){
 					dispose();
-					MainFrame.getInstance(crowd);
+					MainFrame.getInstance(crowd).show();
 				}else{
 					JOptionPane.showMessageDialog(null,
 							"Invalid Login Or Password",
@@ -71,8 +71,9 @@ public class AuthentificationFrame extends JFrame {
 		contentPane.add(Password);
 		
 		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon(AuthentificationFrame.class.getResource("/com/massconnections/img/nn.png")));
 		lblNewLabel.setBounds(12, 0, 326, 364);
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Omar\\Desktop\\maquette\\nn.png"));
+		
 		contentPane.add(lblNewLabel);
 		
 		JLabel lblNewLabel_1 = new JLabel("New label");
