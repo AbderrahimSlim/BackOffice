@@ -14,20 +14,35 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.LayoutStyle.ComponentPlacement;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JLabel;
+
+import com.massconnections.Domains.Crowd;
 
 public class MainFrame extends JFrame {
 
 	public static JPanel contentPane;
 	public static JPanel bodyPanel;
+	public static Crowd currentUser;
 	
+	public static Crowd getCurrentUser() {
+		return currentUser;
+	}
 
+	public static void setCurrentUser(Crowd currentUser) {
+		MainFrame.currentUser = currentUser;
+	}
+
+	private static MainFrame mainFrameInstance;
+	
 	/**
 	 * Create the frame.
 	 */
-	public MainFrame() {
+	private MainFrame(Crowd currentUser) {
+		this.currentUser = currentUser;
 		setTitle("MassConnections");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 967, 500);
@@ -140,4 +155,16 @@ public class MainFrame extends JFrame {
 		contentPane.setLayout(gl_contentPane);
 		
 	}
+	
+	public static MainFrame getInstance(Crowd currentUser){
+		if(mainFrameInstance==null){
+			mainFrameInstance = new MainFrame(currentUser);
+		}
+		else{
+			mainFrameInstance.setCurrentUser(currentUser);
+		}
+		return mainFrameInstance;
+			
+	}
+	
 }

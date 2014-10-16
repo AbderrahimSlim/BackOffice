@@ -57,4 +57,8 @@ public class CrowdCrudDelegate {
 		return getRemoteEJB().findCrowdByMail(email);
 	}
 
+	public static Crowd authentification(String login,String password) {
+		return getRemoteEJB().Authentification(login,password);
+	}
+
 }
