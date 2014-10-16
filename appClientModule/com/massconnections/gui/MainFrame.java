@@ -14,30 +14,15 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
 import javax.swing.LayoutStyle.ComponentPlacement;
-
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-
 import javax.swing.JLabel;
 
-import com.massconnections.Domains.Crowd;
-
 public class MainFrame extends JFrame {
-	private static Crowd CurrentUser;
-	
+
 	public static JPanel contentPane;
 	public static JPanel bodyPanel;
 	
-
-	public static Crowd getCurrentUser() {
-		return CurrentUser;
-	}
-
-
-	public static void setCurrentUser(Crowd currentUser) {
-		CurrentUser = currentUser;
-	}
-
 
 	/**
 	 * Create the frame.

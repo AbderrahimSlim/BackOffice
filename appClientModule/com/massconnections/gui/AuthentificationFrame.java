@@ -4,16 +4,20 @@ import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.JTextField;
-
-import com.massconnections.Delegate.CrowdCrudDelegate;
+import javax.swing.JPasswordField;
 
 public class AuthentificationFrame extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField Login;
+	private JPasswordField Password;
 
 	/**
 	 * Launch the application.
@@ -24,7 +28,6 @@ public class AuthentificationFrame extends JFrame {
 				try {
 					AuthentificationFrame frame = new AuthentificationFrame();
 					frame.setVisible(true);
-					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -37,12 +40,24 @@ public class AuthentificationFrame extends JFrame {
 	 */
 	public AuthentificationFrame() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setBounds(100, 100, 352, 419);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
 		
+		Login = new JTextField();
+		Login.setBounds(48, 59, 234, 45);
+		contentPane.add(Login);
+		Login.setColumns(10);
+		
+		Password = new JPasswordField();
+		Password.setBounds(48, 127, 234, 45);
+		contentPane.add(Password);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(12, 0, 326, 364);
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\Omar\\Desktop\\maquette\\nn.png"));
+		contentPane.add(lblNewLabel);
 	}
-
 }

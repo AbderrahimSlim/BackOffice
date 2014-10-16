@@ -1,15 +1,15 @@
 package com.massconnections.test;
 
 import java.awt.EventQueue;
+import java.awt.EventQueue;
 
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 
 import com.massconnections.Model.StatisticsModel;
-import com.massconnections.gui.MainFrame;
 
-public class CrwodFormTest {
-
+public class StatTest {
+	
 	public static void main(String[] args) {
 		try {
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
@@ -38,24 +38,5 @@ public class CrwodFormTest {
 				}
 			}
 		});
-		
-		
-		/*MainFrame cf = new MainFrame(); 
-		 cf.setVisible(true);*/
-		 
-		 
-		//Crowd c = new Crowd();
-		
-		//CrowdCrudDelegate.getCrowds();
-		//CrowdCrudDelegate.getById(1);
 
-		
-		
-		//CrowdCrudDelegate.addCrowd(c);
-		//c = CrowdCrudDelegate.getById(1);
-		//System.out.println(c.getFirstName());
-		// CrowdCrudDelegate.findCrowdByLogin("ahm");
-
-	}
-
-}
+	}}
