@@ -76,7 +76,9 @@ public class ConsultationPanel extends JPanel {
 		});
 		searchTextField.setColumns(10);
 
-		JButton btnRefresh = new JButton("Refresh");
+		JButton btnRefresh = new JButton("");
+		btnRefresh.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/refresh.png")));
+		
 		btnRefresh.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				tableModel.refresh();
@@ -88,108 +90,55 @@ public class ConsultationPanel extends JPanel {
 		JPanel optionPanel = new JPanel();
 		optionPanel.setBackground(Color.WHITE);
 		GroupLayout groupLayout = new GroupLayout(this);
-		groupLayout
-				.setHorizontalGroup(groupLayout
-						.createParallelGroup(Alignment.TRAILING)
-						.addGroup(
-								groupLayout
-										.createSequentialGroup()
-										.addContainerGap()
-										.addGroup(
-												groupLayout
-														.createParallelGroup(
-																Alignment.TRAILING)
-														.addComponent(
-																scrollPane,
-																Alignment.LEADING,
-																GroupLayout.DEFAULT_SIZE,
-																675,
-																Short.MAX_VALUE)
-														.addComponent(
-																optionPanel,
-																Alignment.LEADING,
-																GroupLayout.DEFAULT_SIZE,
-																675,
-																Short.MAX_VALUE)
-														.addGroup(
-																groupLayout
-																		.createSequentialGroup()
-																		.addComponent(
-																				lblRecherche)
-																		.addPreferredGap(
-																				ComponentPlacement.RELATED)
-																		.addComponent(
-																				categComboBox,
-																				GroupLayout.PREFERRED_SIZE,
-																				117,
-																				GroupLayout.PREFERRED_SIZE)
-																		.addPreferredGap(
-																				ComponentPlacement.UNRELATED)
-																		.addComponent(
-																				searchTextField,
-																				117,
-																				117,
-																				117)
-																		.addPreferredGap(
-																				ComponentPlacement.RELATED,
-																				304,
-																				Short.MAX_VALUE)
-																		.addComponent(
-																				btnRefresh)))
-										.addContainerGap()));
-		groupLayout
-				.setVerticalGroup(groupLayout
-						.createParallelGroup(Alignment.LEADING)
-						.addGroup(
-								groupLayout
-										.createSequentialGroup()
-										.addContainerGap()
-										.addGroup(
-												groupLayout
-														.createParallelGroup(
-																Alignment.BASELINE)
-														.addComponent(
-																btnRefresh)
-														.addComponent(
-																lblRecherche)
-														.addComponent(
-																categComboBox,
-																GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE,
-																GroupLayout.PREFERRED_SIZE)
-														.addComponent(
-																searchTextField,
-																GroupLayout.PREFERRED_SIZE,
-																GroupLayout.DEFAULT_SIZE,
-																GroupLayout.PREFERRED_SIZE))
-										.addPreferredGap(
-												ComponentPlacement.UNRELATED)
-										.addComponent(scrollPane,
-												GroupLayout.DEFAULT_SIZE, 381,
-												Short.MAX_VALUE)
-										.addPreferredGap(
-												ComponentPlacement.RELATED)
-										.addComponent(optionPanel,
-												GroupLayout.PREFERRED_SIZE, 44,
-												GroupLayout.PREFERRED_SIZE)
-										.addGap(5)));
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(scrollPane, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+						.addComponent(optionPanel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 430, Short.MAX_VALUE)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(lblRecherche)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(categComboBox, GroupLayout.PREFERRED_SIZE, 117, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.UNRELATED)
+							.addComponent(searchTextField, 117, 117, 117)
+							.addPreferredGap(ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+							.addComponent(btnRefresh, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap())
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
+						.addComponent(btnRefresh, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+						.addComponent(lblRecherche)
+						.addComponent(categComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(searchTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.UNRELATED)
+					.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 192, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(optionPanel, GroupLayout.PREFERRED_SIZE, 44, GroupLayout.PREFERRED_SIZE)
+					.addGap(5))
+		);
 
 		btnLeft = new JButton();
 		btnMiddle = new JButton();
 		btnRight = new JButton();
-		btnRight.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/delete_User.png")));
+		btnRight.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/delete.png")));
 		
 		GroupLayout gl_optionPanel = new GroupLayout(optionPanel);
 		gl_optionPanel.setHorizontalGroup(
 			gl_optionPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_optionPanel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(btnLeft, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnLeft, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnMiddle, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+					.addComponent(btnMiddle, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnRight, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(223, Short.MAX_VALUE))
+					.addComponent(btnRight, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(176, Short.MAX_VALUE))
 		);
 		gl_optionPanel.setVerticalGroup(
 			gl_optionPanel.createParallelGroup(Alignment.LEADING)
@@ -207,7 +156,9 @@ public class ConsultationPanel extends JPanel {
 		table = new JTable();
 		
 		if (type.equals("projects")) {
-			//btnLeft.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/")));
+			
+			btnLeft.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/apply.png")));
+			btnMiddle.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/deny.png")));
 			
 			tableModel = new ProjectsTableModel();
 			String[] options = { "Id", "Title", "Creator", "Description",
@@ -308,6 +259,8 @@ public class ConsultationPanel extends JPanel {
 				}
 			});
 		}
+		
+		
 		btnRight.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (lsm == null) {

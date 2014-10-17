@@ -26,6 +26,8 @@ import com.massconnections.Domains.Project;
 import com.massconnections.Domains.ProjectCategory;
 import com.massconnections.Domains.ProjectDocument;
 import com.massconnections.Model.ProjectDocumentListModel;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.JSeparator;
 
 public class ProjectView extends JFrame {
 	static Project p;
@@ -69,25 +71,10 @@ public class ProjectView extends JFrame {
 
 		JLabel lblState = new JLabel("State :");
 
-		JLabel lblCreatorValue = new JLabel("");
-
-		JLabel lblCreationDateValue = new JLabel("");
-
-		JLabel lblDeadlineValue = new JLabel("");
-
-		JLabel lblAmountValue = new JLabel("");
-
 		JLabel lblCategoryValue = new JLabel("");
-
-		JLabel lblStateValue = new JLabel("");
-
-		JTextPane lblDescriptionValue = new JTextPane();
-		lblDescriptionValue.setBackground(SystemColor.menu);
-		lblDescriptionValue.setEditable(false);
 
 		JLabel lblDescription = new JLabel("Description :");
 		lblDescription.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblDescriptionValue.setFont(new Font("Arial", Font.PLAIN, 16));
 
 		lblState.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblCategory.setFont(new Font("Arial", Font.PLAIN, 16));
@@ -95,26 +82,10 @@ public class ProjectView extends JFrame {
 		lblDeadline.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblCreationDate.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblCreator.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblCreatorValue.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblCreationDateValue.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblDeadlineValue.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblAmountValue.setFont(new Font("Arial", Font.PLAIN, 16));
 		lblCategoryValue.setFont(new Font("Arial", Font.PLAIN, 16));
-		lblStateValue.setFont(new Font("Arial", Font.PLAIN, 16));
-
-		lblAmountValue.setText("" + p.getAmount());
 		lblCategoryValue.setText(p.getCategory() instanceof ProjectCategory ? p
 				.getCategory().getName() : "");
-		lblCreationDateValue.setText(p.getCreationDate() instanceof Date ? p
-				.getCreationDate().toLocaleString() : "");
-		lblDeadlineValue.setText(p.getDeadLine() instanceof Date ? p
-				.getDeadLine().toLocaleString() : "");
-		lblStateValue.setText(p.getState() > 0 ? "Approved"
-				: (p.getState() < 0 ? "Denied" : "Pending"));
 		lblTitle.setText(p.getTitle());
-		lblDescriptionValue.setText(p.getDescription());
-		lblCreatorValue.setText(p.getUser() instanceof Crowd ? p.getUser()
-				.getFirstName() + " " + p.getUser().getLastName() : "");
 		final JList docList = new JList();
 		if (p.getProjectDocuments().size() > 0) {
 			docList.setModel(new ProjectDocumentListModel(p));
@@ -133,211 +104,75 @@ public class ProjectView extends JFrame {
 				}
 			}
 		});
+		
+		JSeparator separator = new JSeparator();
 
 		GroupLayout gl_panel = new GroupLayout(panel);
-		gl_panel.setHorizontalGroup(gl_panel
-				.createParallelGroup(Alignment.LEADING)
-				.addGroup(
-						gl_panel.createSequentialGroup()
-								.addGroup(
-										gl_panel.createParallelGroup(
-												Alignment.LEADING)
-												.addGroup(
-														gl_panel.createSequentialGroup()
-																.addContainerGap()
-																.addGroup(
-																		gl_panel.createParallelGroup(
-																				Alignment.LEADING)
-																				.addComponent(
-																						lblTitle,
-																						GroupLayout.DEFAULT_SIZE,
-																						645,
-																						Short.MAX_VALUE)
-																				.addGroup(
-																						gl_panel.createSequentialGroup()
-																								.addGroup(
-																										gl_panel.createParallelGroup(
-																												Alignment.TRAILING,
-																												false)
-																												.addComponent(
-																														lblState,
-																														Alignment.LEADING,
-																														GroupLayout.DEFAULT_SIZE,
-																														GroupLayout.DEFAULT_SIZE,
-																														Short.MAX_VALUE)
-																												.addComponent(
-																														lblCategory,
-																														Alignment.LEADING,
-																														GroupLayout.DEFAULT_SIZE,
-																														GroupLayout.DEFAULT_SIZE,
-																														Short.MAX_VALUE)
-																												.addComponent(
-																														lblAmount,
-																														Alignment.LEADING,
-																														GroupLayout.DEFAULT_SIZE,
-																														GroupLayout.DEFAULT_SIZE,
-																														Short.MAX_VALUE)
-																												.addComponent(
-																														lblDeadline,
-																														Alignment.LEADING,
-																														GroupLayout.DEFAULT_SIZE,
-																														GroupLayout.DEFAULT_SIZE,
-																														Short.MAX_VALUE)
-																												.addComponent(
-																														lblCreationDate,
-																														Alignment.LEADING,
-																														GroupLayout.DEFAULT_SIZE,
-																														GroupLayout.DEFAULT_SIZE,
-																														Short.MAX_VALUE)
-																												.addComponent(
-																														lblCreator,
-																														Alignment.LEADING,
-																														GroupLayout.DEFAULT_SIZE,
-																														102,
-																														Short.MAX_VALUE))
-																								.addGap(18)
-																								.addGroup(
-																										gl_panel.createParallelGroup(
-																												Alignment.LEADING)
-																												.addComponent(
-																														lblStateValue,
-																														GroupLayout.PREFERRED_SIZE,
-																														524,
-																														GroupLayout.PREFERRED_SIZE)
-																												.addComponent(
-																														lblCategoryValue,
-																														GroupLayout.PREFERRED_SIZE,
-																														524,
-																														GroupLayout.PREFERRED_SIZE)
-																												.addComponent(
-																														lblAmountValue,
-																														GroupLayout.PREFERRED_SIZE,
-																														524,
-																														GroupLayout.PREFERRED_SIZE)
-																												.addComponent(
-																														lblDeadlineValue,
-																														GroupLayout.PREFERRED_SIZE,
-																														524,
-																														GroupLayout.PREFERRED_SIZE)
-																												.addComponent(
-																														lblCreationDateValue,
-																														GroupLayout.PREFERRED_SIZE,
-																														524,
-																														GroupLayout.PREFERRED_SIZE)
-																												.addComponent(
-																														lblCreatorValue,
-																														GroupLayout.DEFAULT_SIZE,
-																														524,
-																														Short.MAX_VALUE)))
-																				.addGroup(
-																						gl_panel.createSequentialGroup()
-																								.addComponent(
-																										lblDescription,
-																										GroupLayout.PREFERRED_SIZE,
-																										103,
-																										GroupLayout.PREFERRED_SIZE)
-																								.addGap(18)
-																								.addComponent(
-																										lblDescriptionValue,
-																										GroupLayout.DEFAULT_SIZE,
-																										524,
-																										Short.MAX_VALUE))
-																				.addGroup(
-																						gl_panel.createSequentialGroup()
-																								.addComponent(
-																										lblDocuments,
-																										GroupLayout.PREFERRED_SIZE,
-																										103,
-																										GroupLayout.PREFERRED_SIZE)
-																								.addGap(18)
-																								.addComponent(
-																										docList,
-																										GroupLayout.PREFERRED_SIZE,
-																										203,
-																										GroupLayout.PREFERRED_SIZE))))
-												.addGroup(
-														gl_panel.createSequentialGroup()
-																.addGap(132)
-																.addComponent(
-																		btnDownload)))
-								.addContainerGap()));
-		gl_panel.setVerticalGroup(gl_panel
-				.createParallelGroup(Alignment.LEADING)
-				.addGroup(
-						gl_panel.createSequentialGroup()
-								.addContainerGap()
-								.addComponent(lblTitle,
-										GroupLayout.PREFERRED_SIZE, 40,
-										GroupLayout.PREFERRED_SIZE)
-								.addGap(27)
-								.addGroup(
-										gl_panel.createParallelGroup(
-												Alignment.BASELINE)
-												.addComponent(lblCreator)
-												.addComponent(lblCreatorValue))
-								.addGap(18)
-								.addGroup(
-										gl_panel.createParallelGroup(
-												Alignment.BASELINE)
-												.addComponent(lblCreationDate)
-												.addComponent(
-														lblCreationDateValue))
-								.addGap(18)
-								.addGroup(
-										gl_panel.createParallelGroup(
-												Alignment.BASELINE)
-												.addComponent(lblDeadline)
-												.addComponent(lblDeadlineValue))
-								.addGap(18)
-								.addGroup(
-										gl_panel.createParallelGroup(
-												Alignment.BASELINE)
-												.addComponent(lblAmount)
-												.addComponent(lblAmountValue))
-								.addGap(18)
-								.addGroup(
-										gl_panel.createParallelGroup(
-												Alignment.BASELINE)
-												.addComponent(lblCategory)
-												.addComponent(lblCategoryValue))
-								.addGap(18)
-								.addGroup(
-										gl_panel.createParallelGroup(
-												Alignment.BASELINE)
-												.addComponent(lblState)
-												.addComponent(lblStateValue))
-								.addGap(18)
-								.addGroup(
-										gl_panel.createParallelGroup(
-												Alignment.LEADING)
-												.addComponent(
-														lblDescription,
-														GroupLayout.PREFERRED_SIZE,
-														19,
-														GroupLayout.PREFERRED_SIZE)
-												.addComponent(
-														lblDescriptionValue,
-														GroupLayout.PREFERRED_SIZE,
-														GroupLayout.DEFAULT_SIZE,
-														GroupLayout.PREFERRED_SIZE))
-								.addGap(18)
-								.addGroup(
-										gl_panel.createParallelGroup(
-												Alignment.BASELINE)
-												.addComponent(
-														lblDocuments,
-														GroupLayout.PREFERRED_SIZE,
-														19,
-														GroupLayout.PREFERRED_SIZE)
-												.addComponent(
-														docList,
-														GroupLayout.PREFERRED_SIZE,
-														54,
-														GroupLayout.PREFERRED_SIZE))
-								.addGap(9)
-								.addComponent(btnDownload)
-								.addContainerGap(GroupLayout.DEFAULT_SIZE,
-										Short.MAX_VALUE)));
+		gl_panel.setHorizontalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, gl_panel.createSequentialGroup()
+					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+						.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+							.addGap(11)
+							.addComponent(separator, GroupLayout.DEFAULT_SIZE, 743, Short.MAX_VALUE))
+						.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+							.addContainerGap()
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+								.addGroup(gl_panel.createSequentialGroup()
+									.addGap(5)
+									.addComponent(lblTitle, GroupLayout.DEFAULT_SIZE, 739, Short.MAX_VALUE))
+								.addGroup(gl_panel.createSequentialGroup()
+									.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
+										.addComponent(lblCreationDate, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(lblCreator, Alignment.LEADING)
+										.addComponent(lblDeadline, Alignment.LEADING)
+										.addComponent(lblAmount, Alignment.LEADING)
+										.addComponent(lblCategory, Alignment.LEADING)
+										.addComponent(lblState, Alignment.LEADING))
+									.addGap(18)
+									.addComponent(lblCategoryValue, GroupLayout.DEFAULT_SIZE, 623, Short.MAX_VALUE))
+								.addGroup(gl_panel.createSequentialGroup()
+									.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING, false)
+										.addComponent(lblDocuments, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+										.addComponent(lblDescription, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+									.addGap(33)
+									.addComponent(docList, GroupLayout.PREFERRED_SIZE, 623, GroupLayout.PREFERRED_SIZE))))
+						.addGroup(Alignment.LEADING, gl_panel.createSequentialGroup()
+							.addGap(132)
+							.addComponent(btnDownload)))
+					.addContainerGap())
+		);
+		gl_panel.setVerticalGroup(
+			gl_panel.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblTitle, GroupLayout.PREFERRED_SIZE, 40, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(27)
+					.addComponent(lblCreator)
+					.addGap(18)
+					.addComponent(lblCreationDate)
+					.addGap(18)
+					.addComponent(lblDeadline)
+					.addGap(18)
+					.addComponent(lblAmount)
+					.addGap(18)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblCategory)
+						.addComponent(lblCategoryValue, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE))
+					.addGap(18)
+					.addComponent(lblState)
+					.addGap(18)
+					.addComponent(lblDescription, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+					.addGap(24)
+					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
+						.addComponent(lblDocuments, GroupLayout.PREFERRED_SIZE, 19, GroupLayout.PREFERRED_SIZE)
+						.addComponent(docList, GroupLayout.PREFERRED_SIZE, 54, GroupLayout.PREFERRED_SIZE))
+					.addGap(9)
+					.addComponent(btnDownload)
+					.addContainerGap(107, Short.MAX_VALUE))
+		);
 		panel.setLayout(gl_panel);
 		getContentPane().setLayout(groupLayout);
 	}

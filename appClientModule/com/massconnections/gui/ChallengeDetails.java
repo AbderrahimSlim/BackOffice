@@ -16,31 +16,33 @@ public class ChallengeDetails extends JFrame {
 	private JTextField textFieldsubmitter;
 	private JTextField textFieldcategory;
 	public ChallengeDetails(Challenge challenge) {
+		setResizable(false);
 		setTitle("Challenge Details");
 		
 		JPanel panel = new JPanel();
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 414, Short.MAX_VALUE)
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 239, Short.MAX_VALUE)
-					.addGap(22))
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(panel, GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
+					.addContainerGap())
 		);
 		
-		JLabel lblNewLabel = new JLabel("Challenge Title");
+		JLabel lblNewLabel = new JLabel("Challenge Title:");
 		
-		JLabel lblSubmitter = new JLabel("Submitter");
+		JLabel lblSubmitter = new JLabel("Submitter:");
 		
-		JLabel lblCategory = new JLabel("Category");
+		JLabel lblCategory = new JLabel("Category:");
 		
-		JLabel lblDescription = new JLabel("Description");
+		JLabel lblDescription = new JLabel("Description:");
 		
 		textFieldtitle = new JTextField();
 		textFieldtitle.setEditable(false);
@@ -58,7 +60,6 @@ public class ChallengeDetails extends JFrame {
 		textFieldcategory.setText(challenge.getCategory().getName());
 		
 		JTextPane textPanedescription = new JTextPane();
-		textPanedescription.setEditable(false);
 		textPanedescription.setText(challenge.getDescription());
 		GroupLayout gl_panel = new GroupLayout(panel);
 		gl_panel.setHorizontalGroup(
@@ -66,14 +67,12 @@ public class ChallengeDetails extends JFrame {
 				.addGroup(gl_panel.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+						.addComponent(lblDescription, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
 						.addGroup(gl_panel.createSequentialGroup()
-							.addComponent(lblDescription, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap(515, Short.MAX_VALUE))
-						.addGroup(gl_panel.createSequentialGroup()
-							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+							.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
 								.addGroup(gl_panel.createSequentialGroup()
-									.addComponent(lblNewLabel, GroupLayout.DEFAULT_SIZE, 76, Short.MAX_VALUE)
-									.addGap(48))
+									.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 81, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 43, Short.MAX_VALUE))
 								.addGroup(gl_panel.createSequentialGroup()
 									.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 										.addComponent(lblSubmitter, GroupLayout.PREFERRED_SIZE, 90, GroupLayout.PREFERRED_SIZE)
@@ -84,8 +83,8 @@ public class ChallengeDetails extends JFrame {
 								.addComponent(textFieldtitle, GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
 								.addComponent(textFieldsubmitter, GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
 								.addComponent(textFieldcategory, GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
-								.addComponent(textPanedescription, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE))
-							.addContainerGap())))
+								.addComponent(textPanedescription, Alignment.TRAILING, GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE))))
+					.addContainerGap())
 		);
 		gl_panel.setVerticalGroup(
 			gl_panel.createParallelGroup(Alignment.LEADING)
@@ -98,7 +97,7 @@ public class ChallengeDetails extends JFrame {
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblSubmitter, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textFieldsubmitter, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(gl_panel.createParallelGroup(Alignment.BASELINE)
 						.addComponent(lblCategory, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textFieldcategory, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
@@ -106,7 +105,7 @@ public class ChallengeDetails extends JFrame {
 					.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblDescription, GroupLayout.PREFERRED_SIZE, 22, GroupLayout.PREFERRED_SIZE)
 						.addComponent(textPanedescription, GroupLayout.PREFERRED_SIZE, 101, GroupLayout.PREFERRED_SIZE))
-					.addContainerGap(31, Short.MAX_VALUE))
+					.addContainerGap(46, Short.MAX_VALUE))
 		);
 		panel.setLayout(gl_panel);
 		getContentPane().setLayout(groupLayout);

@@ -25,6 +25,7 @@ import com.massconnections.Domains.ChallengeCategory;
 import com.massconnections.Domains.ProjectCategory;
 import com.massconnections.Model.ChallengeCategorieListModel;
 import com.massconnections.Model.ProjectCategorieListModel;
+import javax.swing.ImageIcon;
 
 public class CategoriesPanel extends JPanel {
 	private JTextField nameField;
@@ -40,20 +41,24 @@ public class CategoriesPanel extends JPanel {
 		typeComboBox.setModel(new DefaultComboBoxModel(new String[] {
 				"Project categories", "Challege Categories" }));
 
-		JButton btnRefresh = new JButton("Refresh");
+		JButton btnRefresh = new JButton("");
+		btnRefresh.setIcon(new ImageIcon(CategoriesPanel.class.getResource("/com/massconnections/img/refresh.png")));
 
 		nameField = new JTextField();
 		nameField.setColumns(10);
 
-		final JButton btnAdd = new JButton("Add");
+		final JButton btnAdd = new JButton("");
+		btnAdd.setIcon(new ImageIcon(CategoriesPanel.class.getResource("/com/massconnections/img/ADD.png")));
 
 		JLabel lblName = new JLabel("Name :");
 
 		JScrollPane scrollPane = new JScrollPane();
 
-		JButton btnDelete = new JButton("Delete");
+		JButton btnDelete = new JButton("");
+		btnDelete.setIcon(new ImageIcon(CategoriesPanel.class.getResource("/com/massconnections/img/delete.png")));
 
-		JButton btnEdit = new JButton("Edit");
+		JButton btnEdit = new JButton("");
+		btnEdit.setIcon(new ImageIcon(CategoriesPanel.class.getResource("/com/massconnections/img/Edit.png")));
 
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -62,27 +67,27 @@ public class CategoriesPanel extends JPanel {
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(typeComboBox, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
-							.addPreferredGap(ComponentPlacement.RELATED, 327, Short.MAX_VALUE)
-							.addComponent(btnRefresh))
-						.addComponent(separator, GroupLayout.DEFAULT_SIZE, 526, Short.MAX_VALUE)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(scrollPane)
-							.addGap(18)
-							.addComponent(lblName)
-							.addGap(18)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createSequentialGroup()
-									.addComponent(btnAdd)
-									.addPreferredGap(ComponentPlacement.RELATED)
-									.addComponent(btnEdit, GroupLayout.PREFERRED_SIZE, 51, GroupLayout.PREFERRED_SIZE))
-								.addComponent(nameField, GroupLayout.PREFERRED_SIZE, 196, GroupLayout.PREFERRED_SIZE))
-							.addGap(2)))
-					.addGap(8))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(104)
-					.addComponent(btnDelete, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-					.addGap(377))
+									.addComponent(typeComboBox, GroupLayout.PREFERRED_SIZE, 128, GroupLayout.PREFERRED_SIZE)
+									.addPreferredGap(ComponentPlacement.RELATED, 327, Short.MAX_VALUE)
+									.addComponent(btnRefresh, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE))
+								.addComponent(separator, GroupLayout.PREFERRED_SIZE, 526, Short.MAX_VALUE)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+									.addGap(18)
+									.addComponent(lblName)
+									.addGap(18)
+									.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addGroup(groupLayout.createSequentialGroup()
+											.addComponent(btnAdd, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+											.addPreferredGap(ComponentPlacement.RELATED)
+											.addComponent(btnEdit, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE))
+										.addComponent(nameField, GroupLayout.DEFAULT_SIZE, 196, Short.MAX_VALUE))))
+							.addGap(8))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(btnDelete, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+							.addContainerGap(462, Short.MAX_VALUE))))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -90,25 +95,25 @@ public class CategoriesPanel extends JPanel {
 					.addGap(8)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(typeComboBox, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addComponent(btnRefresh))
+						.addComponent(btnRefresh, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(114)
+							.addComponent(scrollPane, GroupLayout.DEFAULT_SIZE, 233, Short.MAX_VALUE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnDelete, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+							.addGap(29))
+						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 								.addComponent(lblName)
 								.addComponent(nameField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnAdd)
-								.addComponent(btnEdit)))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(18)
-							.addComponent(scrollPane, GroupLayout.PREFERRED_SIZE, 233, GroupLayout.PREFERRED_SIZE)))
-					.addGap(18)
-					.addComponent(btnDelete)
-					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+								.addComponent(btnAdd, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnEdit, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
+							.addContainerGap())))
 		);
 
 		final JList categList = new JList();

@@ -23,6 +23,9 @@ import com.massconnections.Delegate.CrowdCrudDelegate;
 import com.massconnections.Domains.Crowd;
 import com.massconnections.util.FieldVerifier;
 import com.toedter.calendar.JDateChooser;
+import javax.swing.ImageIcon;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class CrowdForm extends JFrame {
 
@@ -136,7 +139,8 @@ public class CrowdForm extends JFrame {
 
 		JSeparator separator = new JSeparator();
 
-		JButton btnSave = new JButton("Save");
+		JButton btnSave = new JButton("");
+		btnSave.setIcon(new ImageIcon(CrowdForm.class.getResource("/com/massconnections/img/save.png")));
 		btnSave.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				if (isValidFisrtName() & isValidLastName() & isValidMail()
@@ -166,7 +170,13 @@ public class CrowdForm extends JFrame {
 			}
 		});
 
-		JButton btnCancel = new JButton("Cancel");
+		JButton btnCancel = new JButton("");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				dispose();
+			}
+		});
+		btnCancel.setIcon(new ImageIcon(CrowdForm.class.getResource("/com/massconnections/img/Cancel.png")));
 
 		firstNameError = new JLabel("error");
 		firstNameError.setVisible(false);
@@ -284,21 +294,21 @@ public class CrowdForm extends JFrame {
 								.addComponent(lastNameTextField, Alignment.TRAILING))
 							.addGap(17)
 							.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
-								.addComponent(lastNameError, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-								.addComponent(firstNameError, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-								.addComponent(sexError, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-								.addComponent(birthDateError, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-								.addComponent(adressError, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-								.addComponent(phoneError, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-								.addComponent(emailError, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-								.addComponent(loginError, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)
-								.addComponent(passError, GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE)))
-						.addComponent(separator, GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+								.addComponent(lastNameError, GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+								.addComponent(firstNameError, GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+								.addComponent(sexError, GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+								.addComponent(birthDateError, GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+								.addComponent(adressError, GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+								.addComponent(phoneError, GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+								.addComponent(emailError, GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+								.addComponent(loginError, GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+								.addComponent(passError, GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)))
+						.addComponent(separator, GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
 						.addGroup(gl_contentPane.createSequentialGroup()
 							.addGap(112)
-							.addComponent(btnSave)
+							.addComponent(btnSave, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
 							.addGap(18)
-							.addComponent(btnCancel)))
+							.addComponent(btnCancel, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap())
 		);
 		gl_contentPane.setVerticalGroup(
@@ -363,8 +373,8 @@ public class CrowdForm extends JFrame {
 					.addComponent(separator, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnSave)
-						.addComponent(btnCancel))
+						.addComponent(btnSave, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnCancel, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		contentPane.setLayout(gl_contentPane);
