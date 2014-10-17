@@ -177,7 +177,7 @@ public class ConsultationPanel extends JPanel {
 		btnLeft = new JButton();
 		btnMiddle = new JButton();
 		btnRight = new JButton();
-		
+		btnRight.setVisible(false);
 		
 		GroupLayout gl_optionPanel = new GroupLayout(optionPanel);
 		gl_optionPanel.setHorizontalGroup(
@@ -207,6 +207,8 @@ public class ConsultationPanel extends JPanel {
 		table = new JTable();
 		
 		if (type.equals("projects")) {
+			//btnLeft.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/")));
+			
 			tableModel = new ProjectsTableModel();
 			String[] options = { "Id", "Title", "Creator", "Description",
 					"Creation Date", "Deadline", "Amount", "State", "Category" };
