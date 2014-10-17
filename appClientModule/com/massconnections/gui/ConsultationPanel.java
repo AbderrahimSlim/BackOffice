@@ -51,7 +51,9 @@ public class ConsultationPanel extends JPanel {
 	JComboBox categComboBox = new JComboBox();
 	private ListSelectionModel lsm;
 	private JButton btnRight;
-
+	private JButton btnLeft;
+	private JButton btnMiddle;
+	
 	/**
 	 * Create the panel.
 	 */
@@ -172,37 +174,30 @@ public class ConsultationPanel extends JPanel {
 												GroupLayout.PREFERRED_SIZE)
 										.addGap(5)));
 
-		JButton btnLeft = new JButton();
-		btnLeft.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnLeft.setHorizontalAlignment(SwingConstants.RIGHT);
-
-		JButton btnMiddle = new JButton();
-
+		btnLeft = new JButton();
+		btnMiddle = new JButton();
 		btnRight = new JButton();
-		btnRight.setFont(new Font("Tahoma", Font.PLAIN, 11));
-		btnRight.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/delete user.png")));
+		
+		
 		GroupLayout gl_optionPanel = new GroupLayout(optionPanel);
 		gl_optionPanel.setHorizontalGroup(
 			gl_optionPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_optionPanel.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(btnLeft)
+					.addComponent(btnLeft, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnMiddle, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnMiddle)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(btnRight, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(259, Short.MAX_VALUE))
+					.addComponent(btnRight, GroupLayout.PREFERRED_SIZE, 76, GroupLayout.PREFERRED_SIZE)
+					.addContainerGap(223, Short.MAX_VALUE))
 		);
 		gl_optionPanel.setVerticalGroup(
 			gl_optionPanel.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_optionPanel.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(gl_optionPanel.createParallelGroup(Alignment.BASELINE)
-						.addComponent(btnLeft)
-						.addComponent(btnMiddle)
+						.addComponent(btnLeft, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnMiddle, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnRight, GroupLayout.PREFERRED_SIZE, 23, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
@@ -216,7 +211,6 @@ public class ConsultationPanel extends JPanel {
 			String[] options = { "Id", "Title", "Creator", "Description",
 					"Creation Date", "Deadline", "Amount", "State", "Category" };
 			categComboBox.setModel(new DefaultComboBoxModel(options));
-			btnLeft.setText("Approve");
 			btnLeft.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					ProjectCrudDelegate.approveProject(ProjectCrudDelegate
@@ -226,7 +220,6 @@ public class ConsultationPanel extends JPanel {
 					table.setModel(tableModel);
 				}
 			});
-			btnMiddle.setText("Denie");
 			btnMiddle.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					ProjectCrudDelegate.denieProject(ProjectCrudDelegate
@@ -239,22 +232,21 @@ public class ConsultationPanel extends JPanel {
 
 		}
 		if (type.equals("crowds")) {
-
+			
+			btnLeft.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/Add_user.png")));
+			
 			String[] options = { "First Name", "Last Name", "Age", "sex",
 					"Login", "Email", "Projects", "Challenges" };
 			categComboBox.setModel(new DefaultComboBoxModel(options));
 
-			btnLeft.setText("Add");
 			btnLeft.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					new CrowdForm().show();
 				}
 			});
 
-			btnMiddle.setText("Modify");
 			btnMiddle.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					lsm.getMinSelectionIndex();
 					if (lsm == null) {
 						JOptionPane.showMessageDialog(null,
 								"Select a row",
@@ -286,7 +278,6 @@ public class ConsultationPanel extends JPanel {
 
 			tableModel = new ChallengesTableModel();
 
-			btnLeft.setText("Approve");
 			btnLeft.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					ChallengeCrudDelegate.approveChalenge(ChallengeCrudDelegate
@@ -296,7 +287,6 @@ public class ConsultationPanel extends JPanel {
 					table.setModel(tableModel);
 				}
 			});
-			btnMiddle.setText("Denie");
 			btnMiddle.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
 					ChallengeCrudDelegate.denieChalenge(ChallengeCrudDelegate
