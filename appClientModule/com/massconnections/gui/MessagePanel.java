@@ -1,15 +1,19 @@
 package com.massconnections.gui;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -20,29 +24,16 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.ListSelectionModel;
-
-import com.massconnections.Delegate.ChallengeCrudDelegate;
-import com.massconnections.Delegate.CrowdCrudDelegate;
-import com.massconnections.Delegate.ProjectCrudDelegate;
-import com.massconnections.Domains.Challenge;
-import com.massconnections.Domains.Crowd;
-import com.massconnections.Domains.Project;
-import com.massconnections.Model.ChallengesTableModel;
-import com.massconnections.Model.CrowdTableModel;
-import com.massconnections.Model.GenericTableModel;
-import com.massconnections.Model.MessageTableModel;
-import com.massconnections.Model.ProjectsTableModel;
-
 import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.Color;
-import java.awt.Font;
-
-import javax.swing.ImageIcon;
+import com.massconnections.Delegate.CrowdCrudDelegate;
+import com.massconnections.Delegate.ProjectCrudDelegate;
+import com.massconnections.Model.GenericTableModel;
+import com.massconnections.Model.InBoxMessageTableModel;
+import com.massconnections.Model.OutBoxMessageTableModel;
+import com.massconnections.Model.ProjectsTableModel;
 
 public class MessagePanel extends JPanel {
 	private JTextField searchTextField;
@@ -310,8 +301,9 @@ public class MessagePanel extends JPanel {
 		MessagesComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (MessagesComboBox.getSelectedIndex() == 0) {
-					table.setModel(new MessageTableModel(CrowdCrudDelegate.getById(2)));
+					table.setModel(new InBoxMessageTableModel(CrowdCrudDelegate.getById(2)));
 				} else {
+					table.setModel(new OutBoxMessageTableModel(CrowdCrudDelegate.getById(2)));
 				}
 			}
 		});
