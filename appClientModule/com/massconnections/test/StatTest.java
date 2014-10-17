@@ -32,7 +32,7 @@ public class StatTest {
 				try {
 					/*MainFrame cf = new MainFrame(); 
 					 cf.setVisible(true);*/
-					StatisticsModel.projectDonationDone();
+					//StatisticsModel.();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
