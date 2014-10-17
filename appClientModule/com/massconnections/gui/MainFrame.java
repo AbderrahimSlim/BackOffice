@@ -42,7 +42,7 @@ public class MainFrame extends JFrame {
 		this.currentUser = currentUser;
 		setTitle("MassConnections");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 967, 500);
+		setBounds(100, 100, 967, 606);
 		contentPane = new JPanel();
 		contentPane.setBackground(new Color(27,188,155));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -134,18 +134,22 @@ public class MainFrame extends JFrame {
 		
 		JButton lblLogout = new JButton("");
 		lblLogout.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/signout.png")));
+		
+		JButton btnCateg = new JButton("");
+		btnCateg.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/Manage cat.png")));
 		GroupLayout gl_menuPanel = new GroupLayout(menuPanel);
 		gl_menuPanel.setHorizontalGroup(
 			gl_menuPanel.createParallelGroup(Alignment.TRAILING)
 				.addGroup(gl_menuPanel.createSequentialGroup()
-					.addGroup(gl_menuPanel.createParallelGroup(Alignment.TRAILING)
-						.addComponent(lblLogout, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE)
-						.addComponent(labelMessage, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE)
-						.addComponent(labelStat, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE)
-						.addComponent(labelUser, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE)
-						.addComponent(labelChallenge, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE)
-						.addComponent(labelProject, Alignment.LEADING, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE)
-						.addComponent(lblMenu, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE))
+					.addGroup(gl_menuPanel.createParallelGroup(Alignment.LEADING)
+						.addComponent(lblLogout, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE)
+						.addComponent(labelMessage, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE)
+						.addComponent(labelStat, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE)
+						.addComponent(labelUser, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE)
+						.addComponent(labelChallenge, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE)
+						.addComponent(labelProject, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE)
+						.addComponent(lblMenu, Alignment.TRAILING, GroupLayout.PREFERRED_SIZE, 211, Short.MAX_VALUE)
+						.addComponent(btnCateg, GroupLayout.PREFERRED_SIZE, 1, Short.MAX_VALUE))
 					.addContainerGap())
 		);
 		gl_menuPanel.setVerticalGroup(
@@ -162,6 +166,8 @@ public class MainFrame extends JFrame {
 					.addComponent(labelStat, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
 					.addGap(1)
 					.addComponent(labelMessage, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
+					.addGap(1)
+					.addComponent(btnCateg, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
 					.addPreferredGap(ComponentPlacement.RELATED, 1, Short.MAX_VALUE)
 					.addComponent(lblLogout, GroupLayout.PREFERRED_SIZE, 63, GroupLayout.PREFERRED_SIZE)
 					.addGap(1))
@@ -182,5 +188,4 @@ public class MainFrame extends JFrame {
 		return mainFrameInstance;
 			
 	}
-	
 }

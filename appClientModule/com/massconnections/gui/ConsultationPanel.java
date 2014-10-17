@@ -177,7 +177,7 @@ public class ConsultationPanel extends JPanel {
 		btnLeft = new JButton();
 		btnMiddle = new JButton();
 		btnRight = new JButton();
-		btnRight.setVisible(false);
+		btnRight.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/delete_User.png")));
 		
 		GroupLayout gl_optionPanel = new GroupLayout(optionPanel);
 		gl_optionPanel.setHorizontalGroup(
@@ -236,6 +236,9 @@ public class ConsultationPanel extends JPanel {
 		if (type.equals("crowds")) {
 			
 			btnLeft.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/Add_user.png")));
+			btnMiddle.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/Update_User.png")));
+			
+			
 			
 			String[] options = { "First Name", "Last Name", "Age", "sex",
 					"Login", "Email", "Projects", "Challenges" };
@@ -274,6 +277,12 @@ public class ConsultationPanel extends JPanel {
 			tableModel = new CrowdTableModel();
 		}
 		if (type.equals("challenges")) {
+			
+			btnLeft.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/apply.png")));
+			btnMiddle.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/deny.png")));
+			
+		
+			
 			String[] options = { "Id", "Title", "Submitter", "Description",
 					"Category", "State" };
 			categComboBox.setModel(new DefaultComboBoxModel(options));
