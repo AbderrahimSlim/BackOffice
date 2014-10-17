@@ -20,7 +20,7 @@
 	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/jBossLibs"/>
 	<classpathentry kind="lib" path="lib/hibernate-core-4.0.1.Final.jar"/>
 	<classpathentry kind="lib" path="lib/jboss-client.jar"/>
-	<classpathentry kind="lib" path="lib/jfreechart-1.0.19-demo.jar"/>
 	<classpathentry kind="lib" path="lib/jcalendar-1.4.jar"/>
+	<classpathentry kind="lib" path="lib/jfreechart-1.0.17.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

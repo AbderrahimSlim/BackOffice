@@ -111,6 +111,15 @@ public class MainFrame extends JFrame {
 		labelUser.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/users.png")));
 		
 		JButton labelStat = new JButton("");
+		labelStat.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				bodyPanel.removeAll();
+				bodyPanel.add(new StatPanel());
+                repaint();
+                printAll(getGraphics());//Extort print all content
+			}
+		});
 		labelStat.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/stat.png")));
 		
 		JButton labelMessage = new JButton("");

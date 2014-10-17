@@ -1,5 +1,6 @@
 package com.massconnections.Model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.massconnections.Delegate.ProjectCrudDelegate;
@@ -9,14 +10,27 @@ import com.massconnections.Domains.Project;
 public class StatisticsModel {
 	
 	
-	public static void projectDonationDone(){
+	public static List projectDonationDone(){
+		int undone = 0;
+		int done = 0;
+		List result = new ArrayList();
+		
 		List<Project> projects = ProjectCrudDelegate.getAllProjects();
 		for(Project project : projects){
-			System.out.println(project.getDonations().size());
+			float ammountTotal = 0f;
 			for(Donation donation : project.getDonations()){
-				System.out.println(project.getTitle()+" "+donation.getAmount());
+				ammountTotal+=donation.getAmount();
+			}
+			if(ammountTotal >= project.getAmount()){
+				done++;
+			}else{
+				undone++;
 			}
 		}
+		result.add(done);
+		result.add(undone);
+		return result;
+		
 	}
 	
 
