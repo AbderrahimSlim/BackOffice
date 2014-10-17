@@ -47,7 +47,8 @@ public class MessageTest {
 			public void run() {
 				try {
 					MainFrame.getInstance(CrowdCrudDelegate.getById(2)).setVisible(true);
-					
+					//SendMessage sm = new SendMessage(CrowdCrudDelegate.getById(2));
+					//sm.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
