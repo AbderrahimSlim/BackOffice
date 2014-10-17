@@ -13,7 +13,7 @@ import com.massconnections.Domains.Project;
 
 public class OutBoxMessageTableModel extends GenericTableModel {
 
-	String[] column = { "Sender", "Object", "Content"};
+	String[] column = { "reciever", "Object", "Content"};
 
 	private List<Message> MessageList = new ArrayList<Message>();
 	private List<Message> resultSearchList = new ArrayList<Message>();
@@ -60,7 +60,7 @@ public class OutBoxMessageTableModel extends GenericTableModel {
 			msg = MessageList.get(rowIndex);
 		}
 		if (columnIndex == 0) {
-			return msg.getSender().getFirstName().concat(" "+msg.getSender().getLastName());
+			return msg.getRecever().getFirstName().concat(" "+msg.getRecever().getLastName());
 		} else if (columnIndex == 1) {
 			if (msg.getSubject() != null)
 				return msg.getSubject();
