@@ -46,9 +46,8 @@ public class MessageTest {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					//MainFrame.getInstance(CrowdCrudDelegate.getById(2)).setVisible(true);
-					SendMessage sm = new SendMessage();
-					sm.setVisible(true);
+					MainFrame.getInstance(CrowdCrudDelegate.getById(2)).setVisible(true);
+					
 				} catch (Exception e) {
 					e.printStackTrace();
 				}

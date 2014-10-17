@@ -41,7 +41,7 @@ public class MainFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	private MainFrame(Crowd currentUser) {
+	private MainFrame(final Crowd currentUser) {
 		this.currentUser = currentUser;
 		setTitle("MassConnections");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -123,6 +123,16 @@ public class MainFrame extends JFrame {
 		labelStat.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/stat.png")));
 		
 		JButton labelMessage = new JButton("");
+		labelMessage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				bodyPanel.removeAll();
+				bodyPanel.add(new MessagePanel(currentUser));
+                repaint();
+                printAll(getGraphics());//Extort print all content
+				
+			}
+		});
 		labelMessage.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/msg.png")));
 		
 		JButton lblLogout = new JButton("");
