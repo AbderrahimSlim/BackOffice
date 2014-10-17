@@ -82,79 +82,49 @@ public class InBoxMessageTableModel extends GenericTableModel {
 		this.MessageList = MessageDelegate.getInboxMessages(r);
 	}
 
-	/*@Override
+	@Override
 	public void initSearch(String searchString, int searchIndex) {
-		
-					resultSearchList = new ArrayList<Challenge>();
+
+		resultSearchList = new ArrayList<Message>();
 		if (searchString.length() > 0) {
 			searching = true;
-			for (Challenge challenge : ChallengeList) {
+			for (Message msg : MessageList) {
 				if (searchIndex == 0) {
-					if ("" + challenge.getId() != null) {
-						if (("" + challenge.getId()).toUpperCase().matches(
-								"(.*)" + searchString.toUpperCase() + "(.*)")) {
-							resultSearchList.add(challenge);
-						}
-					}
-				} else if (searchIndex == 2) {
-					if (challenge.getUser().getFirstName() != null) {
-						if (challenge
-								.getUser()
-								.getFirstName()
-								.toUpperCase()
+					if (msg.getSender() != null) {
+						if ((msg.getSender().getFirstName() + " " + msg
+								.getSender().getLastName()).toUpperCase()
 								.matches(
 										"(.*)" + searchString.toUpperCase()
 												+ "(.*)")) {
-							resultSearchList.add(challenge);
+							resultSearchList.add(msg);
 						}
 					}
 				} else if (searchIndex == 1) {
-					if (challenge.getTitle() != null) {
-						if (challenge
-								.getTitle()
+					if (msg.getSubject() != null) {
+						if (msg.getSubject()
 								.toUpperCase()
 								.matches(
 										"(.*)" + searchString.toUpperCase()
 												+ "(.*)")) {
-							resultSearchList.add(challenge);
+							resultSearchList.add(msg);
 						}
 					}
-				} else if (searchIndex == 3) {
-					if (challenge.getDescription() != null) {
-						if (challenge
-								.getDescription()
+				} else if (searchIndex == 2) {
+					if (msg.getContent() != null) {
+						if (msg.getContent()
 								.toUpperCase()
 								.matches(
 										"(.*)" + searchString.toUpperCase()
 												+ "(.*)")) {
-							resultSearchList.add(challenge);
+							resultSearchList.add(msg);
 						}
-					}
-
-				}
-				 else if (searchIndex == 4) {
-
-if (challenge.getCategory().getName() != null) {
-						if (challenge.getCategory().getName()
-								.toUpperCase()
-								.matches(
-										"(.*)" + searchString.toUpperCase()
-												+ "(.*)")) {
-							resultSearchList.add(challenge);
-						}
-					}
-				} else if (searchIndex == 5) {
-					String x[] = {"DENIED", "PENDING", "APPROVED"};
-					if (x[challenge.getState() + 1].toUpperCase().matches(
-							"(.*)" + searchString.toUpperCase() + "(.*)")){
-						resultSearchList.add(challenge);
 					}
 				}
 			}
 		} else {
 			searching = false;
 		}
-	}*/
+	}
 	
 
 	@Override

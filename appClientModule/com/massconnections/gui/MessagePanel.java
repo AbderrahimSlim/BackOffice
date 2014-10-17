@@ -39,31 +39,22 @@ public class MessagePanel extends JPanel {
 	private JTextField searchTextField;
 	private JTable table;
 	public static GenericTableModel tableModel;
-	public static String type = "";
 	JComboBox categComboBox = new JComboBox();
 	private ListSelectionModel lsm;
-	private JButton btnRight;
 
 	/**
 	 * Create the panel.
 	 */
-	public MessagePanel(String type) {
+	public MessagePanel() {
+		tableModel = new GenericTableModel();
 		setBackground(Color.WHITE);
-		this.type = type;
 
 		JScrollPane scrollPane = new JScrollPane();
 
 		JLabel lblRecherche = new JLabel("Search By:");
 
 		searchTextField = new JTextField();
-		searchTextField.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyReleased(KeyEvent arg0) {
-				tableModel.initSearch(searchTextField.getText(),
-						categComboBox.getSelectedIndex());
-				tableModel.fireTableDataChanged();
-			}
-		});
+
 		searchTextField.setColumns(10);
 
 		JButton btnRefresh = new JButton("Refresh");
@@ -189,39 +180,20 @@ public class MessagePanel extends JPanel {
 												GroupLayout.PREFERRED_SIZE)
 										.addGap(5)));
 
-		JButton btnLeft = new JButton();
-		btnLeft.setText("Send");
-		btnLeft.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
-		btnLeft.setHorizontalAlignment(SwingConstants.RIGHT);
+		JButton btnNewMessage = new JButton("New Message");
 
-		btnRight = new JButton();
-		btnRight.setFont(new Font("Tahoma", Font.PLAIN, 11));
 		GroupLayout gl_optionPanel = new GroupLayout(optionPanel);
 		gl_optionPanel.setHorizontalGroup(gl_optionPanel.createParallelGroup(
 				Alignment.LEADING).addGroup(
-				gl_optionPanel
-						.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(btnLeft)
-						.addGap(18)
-						.addComponent(btnRight, GroupLayout.PREFERRED_SIZE, 63,
-								GroupLayout.PREFERRED_SIZE)
-						.addContainerGap(306, Short.MAX_VALUE)));
+				gl_optionPanel.createSequentialGroup().addContainerGap()
+						.addComponent(btnNewMessage)
+						.addContainerGap(477, Short.MAX_VALUE)));
 		gl_optionPanel.setVerticalGroup(gl_optionPanel.createParallelGroup(
 				Alignment.LEADING).addGroup(
 				gl_optionPanel
 						.createSequentialGroup()
 						.addContainerGap()
-						.addGroup(
-								gl_optionPanel
-										.createParallelGroup(Alignment.LEADING)
-										.addComponent(btnRight,
-												GroupLayout.PREFERRED_SIZE, 23,
-												GroupLayout.PREFERRED_SIZE)
-										.addComponent(btnLeft))
+						.addComponent(btnNewMessage)
 						.addContainerGap(GroupLayout.DEFAULT_SIZE,
 								Short.MAX_VALUE)));
 		optionPanel.setLayout(gl_optionPanel);
@@ -229,46 +201,8 @@ public class MessagePanel extends JPanel {
 
 		table = new JTable();
 
-		tableModel = new ProjectsTableModel();
-		String[] categOptions = { "Sender", "Object", "Content", "Date" };
-		categComboBox.setModel(new DefaultComboBoxModel(categOptions));
-		btnLeft.setText("Approve");
-		btnLeft.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				ProjectCrudDelegate.approveProject(ProjectCrudDelegate
-						.getById(((Integer) table.getValueAt(
-								table.getSelectedRow(), 0)).intValue()));
-				tableModel = new ProjectsTableModel();
-				table.setModel(tableModel);
-			}
-		});
-
-		btnRight.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				if (lsm == null) {
-					JOptionPane.showMessageDialog(null,
-							"At least select one row", "Error",
-							JOptionPane.ERROR_MESSAGE);
-				} else {
-					int p = JOptionPane.showConfirmDialog(null,
-							"Are you sure you want to delete this element",
-							"Delete", JOptionPane.YES_NO_OPTION);
-					if (p == 0) {
-						int minIndex = lsm.getMinSelectionIndex();
-						int maxIndex = lsm.getMaxSelectionIndex();
-						List elements = new ArrayList();
-						for (int i = minIndex; i <= maxIndex; i++) {
-							if (lsm.isSelectedIndex(i)) {
-								Object element = tableModel.getElementAt(i);
-								elements.add(element);
-							}
-						}
-						tableModel.removeRows(elements);
-						tableModel.fireTableDataChanged();
-					}
-				}
-			}
-		});
+		categComboBox.setModel(new DefaultComboBoxModel(new String[] {
+				"Sender", "Object", "Content" }));
 
 		table.setModel(tableModel);
 		table.setAutoCreateRowSorter(true);
@@ -281,30 +215,44 @@ public class MessagePanel extends JPanel {
 		table.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				if (evt.getClickCount() == 2) {
-					if (lsm == null) {
-						JOptionPane.showMessageDialog(null, "Select a row",
-								"Error", JOptionPane.ERROR_MESSAGE);
-					} else {
-						int minIndex = lsm.getMinSelectionIndex();
-						int maxIndex = lsm.getMaxSelectionIndex();
-						if ((maxIndex - minIndex) == 0) {
-							Object element = tableModel.getElementAt(minIndex);
-							// appel de frame
-						} else {
-							JOptionPane.showMessageDialog(null, "Select a row",
-									"Error", JOptionPane.ERROR_MESSAGE);
-						}
-					}
+					// message info
 				}
 			}
 		});
 		MessagesComboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				if (MessagesComboBox.getSelectedIndex() == 0) {
-					table.setModel(new InBoxMessageTableModel(CrowdCrudDelegate.getById(2)));
+					table.setModel(new InBoxMessageTableModel(CrowdCrudDelegate
+							.getById(2)));
 				} else {
-					table.setModel(new OutBoxMessageTableModel(CrowdCrudDelegate.getById(2)));
+					table.setModel(new OutBoxMessageTableModel(
+							CrowdCrudDelegate.getById(2)));
 				}
+			}
+		});
+
+		btnNewMessage.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				// new message
+			}
+		});
+		searchTextField.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				if (MessagesComboBox.getSelectedIndex() == 0) {
+					((InBoxMessageTableModel) (table.getModel())).initSearch(
+							searchTextField.getText(),
+							categComboBox.getSelectedIndex());
+					((InBoxMessageTableModel) (table.getModel()))
+					.fireTableDataChanged();
+				} else {
+					((OutBoxMessageTableModel) (table.getModel())).initSearch(
+							searchTextField.getText(),
+							categComboBox.getSelectedIndex());
+					((OutBoxMessageTableModel) (table.getModel()))
+					.fireTableDataChanged();
+				}
+				
 			}
 		});
 
