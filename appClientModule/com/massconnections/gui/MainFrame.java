@@ -1,5 +1,6 @@
 package com.massconnections.gui;
 
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.MouseAdapter;
@@ -10,15 +11,11 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.border.EmptyBorder;
 import javax.swing.border.LineBorder;
-import javax.swing.LayoutStyle.ComponentPlacement;
-
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-
-import javax.swing.JLabel;
 
 import com.massconnections.Domains.Crowd;
 
@@ -41,7 +38,7 @@ public class MainFrame extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	private MainFrame(Crowd currentUser) {
+	private MainFrame(final Crowd currentUser) {
 		this.currentUser = currentUser;
 		setTitle("MassConnections");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -111,9 +108,28 @@ public class MainFrame extends JFrame {
 		labelUser.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/users.png")));
 		
 		JButton labelStat = new JButton("");
+		labelStat.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				bodyPanel.removeAll();
+				bodyPanel.add(new StatPanel());
+                repaint();
+                printAll(getGraphics());//Extort print all content
+			}
+		});
 		labelStat.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/stat.png")));
 		
 		JButton labelMessage = new JButton("");
+		labelMessage.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				bodyPanel.removeAll();
+				bodyPanel.add(new MessagePanel(currentUser));
+                repaint();
+                printAll(getGraphics());//Extort print all content
+				
+			}
+		});
 		labelMessage.setIcon(new ImageIcon(MainFrame.class.getResource("/com/massconnections/img/msg.png")));
 		
 		JButton lblLogout = new JButton("");

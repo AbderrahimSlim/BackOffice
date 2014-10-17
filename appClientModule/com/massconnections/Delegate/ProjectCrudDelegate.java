@@ -29,6 +29,10 @@ public class ProjectCrudDelegate {
 		return getRemoteEJB().getProjects();
 	}
 	
+	public static List<Project> getProjectsWithDonations(){
+		return getRemoteEJB().getProjectsWithDonation();
+	}
+	
 	public static Project getById(int id){
 		return getRemoteEJB().getById(id);
 	}

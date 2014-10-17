@@ -32,7 +32,7 @@ public class CrwodFormTest {
 				try {
 					/*MainFrame cf = new MainFrame(); 
 					 cf.setVisible(true);*/
-					StatisticsModel.projectDonationDone();
+					//StatisticsModel.projectDonationDone();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
