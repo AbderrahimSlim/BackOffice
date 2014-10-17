@@ -11,7 +11,7 @@ import com.massconnections.Domains.Crowd;
 import com.massconnections.Domains.Message;
 import com.massconnections.Domains.Project;
 
-public class MessageTableModel extends GenericTableModel {
+public class InBoxMessageTableModel extends GenericTableModel {
 
 	String[] column = { "Sender", "Object", "Content"};
 
@@ -20,7 +20,7 @@ public class MessageTableModel extends GenericTableModel {
 	private boolean searching = false;
 	private Crowd r;
 
-	public MessageTableModel(Crowd r) {
+	public InBoxMessageTableModel(Crowd r) {
 		MessageList = MessageDelegate.getInboxMessages(r);
 		this.r=r;
 	}
