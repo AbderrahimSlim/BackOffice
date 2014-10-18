@@ -21,7 +21,7 @@ public class OutBoxMessageTableModel extends GenericTableModel {
 	private Crowd r;
 
 	public OutBoxMessageTableModel(Crowd r) {
-		MessageList = MessageDelegate.getInboxMessages(r);
+		MessageList = MessageDelegate.getOutboxMessages(r);
 		this.r = r;
 	}
 

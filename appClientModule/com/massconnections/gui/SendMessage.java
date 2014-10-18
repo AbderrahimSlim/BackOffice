@@ -52,7 +52,6 @@ public class SendMessage extends JFrame {
 	public SendMessage(final Crowd currentUser) {
 		setTitle("Send Message");
 		this.currentUser=currentUser;
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -73,6 +72,11 @@ public class SendMessage extends JFrame {
 		btnSend.setIcon(new ImageIcon(SendMessage.class.getResource("/com/massconnections/img/send.png")));
 
 		JButton btnCancel = new JButton("");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+			}
+		});
 		btnCancel.setIcon(new ImageIcon(SendMessage.class.getResource("/com/massconnections/img/Cancel.png")));
 
 		final JComboBox ToComboBox = new JComboBox();

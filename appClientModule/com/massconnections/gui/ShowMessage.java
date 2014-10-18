@@ -30,7 +30,6 @@ public class ShowMessage extends JFrame {
 	 * Create the frame.
 	 */
 	public ShowMessage(Message msg) {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -39,11 +38,13 @@ public class ShowMessage extends JFrame {
 		JLabel lblSender = new JLabel("Sender :");
 		
 		senderTextField = new JTextField();
+		senderTextField.setEditable(false);
 		senderTextField.setColumns(10);
 	
 		JLabel lblContent = new JLabel("Content :");
 		
 		JTextArea contentTextArea = new JTextArea();
+		contentTextArea.setEditable(false);
 		GroupLayout gl_contentPane = new GroupLayout(contentPane);
 		gl_contentPane.setHorizontalGroup(
 			gl_contentPane.createParallelGroup(Alignment.LEADING)
@@ -54,7 +55,7 @@ public class ShowMessage extends JFrame {
 					.addPreferredGap(ComponentPlacement.UNRELATED)
 					.addGroup(gl_contentPane.createParallelGroup(Alignment.LEADING)
 						.addComponent(contentTextArea, GroupLayout.PREFERRED_SIZE, 343, GroupLayout.PREFERRED_SIZE)
-						.addComponent(senderTextField, GroupLayout.PREFERRED_SIZE, 166, GroupLayout.PREFERRED_SIZE))
+						.addComponent(senderTextField, GroupLayout.PREFERRED_SIZE, 106, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(25, Short.MAX_VALUE))
 		);
 		gl_contentPane.setVerticalGroup(
