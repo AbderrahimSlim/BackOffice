@@ -242,7 +242,7 @@ public class MessagePanel extends JPanel {
 
 		btnNewMessage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				SendMessage sm = new SendMessage(CrowdCrudDelegate.getById(2));
+				SendMessage sm = new SendMessage(currentUser);
 				sm.setVisible(true);
 			}
 		});
