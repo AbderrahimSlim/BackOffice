@@ -158,7 +158,7 @@ public class ConsultationPanel extends JPanel {
 		
 		if (type.equals("projects")) {
 			
-			btnLeft.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/apply.png")));
+			btnLeft.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/approve.png")));
 			btnMiddle.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/deny.png")));
 			
 			tableModel = new ProjectsTableModel();
@@ -230,7 +230,7 @@ public class ConsultationPanel extends JPanel {
 		}
 		if (type.equals("challenges")) {
 			
-			btnLeft.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/apply.png")));
+			btnLeft.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/approve.png")));
 			btnMiddle.setIcon(new ImageIcon(ConsultationPanel.class.getResource("/com/massconnections/img/deny.png")));
 			
 		

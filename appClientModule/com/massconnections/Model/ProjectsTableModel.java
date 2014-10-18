@@ -3,7 +3,9 @@ package com.massconnections.Model;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.massconnections.Delegate.CrowdCrudDelegate;
 import com.massconnections.Delegate.ProjectCrudDelegate;
+import com.massconnections.Domains.Crowd;
 import com.massconnections.Domains.Project;
 
 public class ProjectsTableModel extends GenericTableModel {
@@ -106,7 +108,11 @@ public class ProjectsTableModel extends GenericTableModel {
 
 	@Override
 	public void removeRows(List elements) {
-		throw new UnsupportedOperationException("Not supported yet.");
+		List<Project> projects = (List<Project>) elements;
+		for (int i = 0; i < projects.size(); i++) {
+			ProjectCrudDelegate.remove(projects.get(i));
+			projectList.remove(projects.get(i));
+		}
 	}
 
 	public void initSearch(String searchString, int searchIndex) {
@@ -122,11 +128,10 @@ public class ProjectsTableModel extends GenericTableModel {
 						}
 					}
 				} else if (searchIndex == 2) {
-					if (project.getUser().getFirstName() != null) {
-						if (project
-								.getUser()
-								.getFirstName()
-								.toUpperCase()
+					if (project.getUser().getFirstName() + " "
+							+ project.getUser().getLastName() != null) {
+						if ((project.getUser().getFirstName() + " " + project
+								.getUser().getLastName()).toUpperCase()
 								.matches(
 										"(.*)" + searchString.toUpperCase()
 												+ "(.*)")) {
@@ -159,7 +164,8 @@ public class ProjectsTableModel extends GenericTableModel {
 				} else if (searchIndex == 4) {
 					if (project.getCreationDate() != null) {
 						if (project
-								.getCreationDate().toLocaleString()
+								.getCreationDate()
+								.toLocaleString()
 								.toUpperCase()
 								.matches(
 										"(.*)" + searchString.toUpperCase()
@@ -170,7 +176,8 @@ public class ProjectsTableModel extends GenericTableModel {
 				} else if (searchIndex == 5) {
 					if (project.getDeadLine() != null) {
 						if (project
-								.getDeadLine().toLocaleString()
+								.getDeadLine()
+								.toLocaleString()
 								.toUpperCase()
 								.matches(
 										"(.*)" + searchString.toUpperCase()
@@ -190,6 +197,13 @@ public class ProjectsTableModel extends GenericTableModel {
 					if (x[project.getState() + 1].toUpperCase().matches(
 							"(.*)" + searchString.toUpperCase() + "(.*)")) {
 						resultSearchList.add(project);
+					}
+				} else if (searchIndex == 8) {
+					if (project.getCategory() != null) {
+						if ((project.getCategory().getName()).toUpperCase().matches(
+								"(.*)" + searchString.toUpperCase() + "(.*)")) {
+							resultSearchList.add(project);
+						}
 					}
 				}
 			}

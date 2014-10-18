@@ -36,5 +36,9 @@ public class ProjectCrudDelegate {
 	public static Project getById(int id){
 		return getRemoteEJB().getById(id);
 	}
+	
+	public static void remove(Project p) {
+		getRemoteEJB().delete(p);
+	}
 
 }
