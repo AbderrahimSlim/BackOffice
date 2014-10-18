@@ -70,6 +70,11 @@ public class SendMessage extends JFrame {
 		JButton btnSend = new JButton("Send");
 
 		JButton btnCancel = new JButton("Cancel");
+		btnCancel.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				setVisible(false);
+			}
+		});
 
 		final JComboBox ToComboBox = new JComboBox();
 

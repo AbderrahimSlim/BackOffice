@@ -1,6 +1,5 @@
 package com.massconnections.gui;
 
-
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -26,6 +25,7 @@ import javax.swing.event.ListSelectionListener;
 
 import com.massconnections.Delegate.CrowdCrudDelegate;
 import com.massconnections.Domains.Crowd;
+import com.massconnections.Domains.Message;
 import com.massconnections.Model.GenericTableModel;
 import com.massconnections.Model.InBoxMessageTableModel;
 import com.massconnections.Model.OutBoxMessageTableModel;
@@ -212,7 +212,21 @@ public class MessagePanel extends JPanel {
 		table.addMouseListener(new MouseAdapter() {
 			public void mouseClicked(MouseEvent evt) {
 				if (evt.getClickCount() == 2) {
-					// message info
+					if (MessagesComboBox.getSelectedIndex() == 0) {
+						ShowMessage sm = new ShowMessage(
+								(Message) ((InBoxMessageTableModel) table
+										.getModel()).getElementAt(table
+										.getSelectedRow()));
+						sm.setVisible(true);
+					} else {
+						ShowMessage sm = new ShowMessage(
+								(Message) ((OutBoxMessageTableModel) table
+										.getModel()).getElementAt(table
+										.getSelectedRow()));
+						sm.setVisible(true);
+					}
+					
+
 				}
 			}
 		});
@@ -228,7 +242,8 @@ public class MessagePanel extends JPanel {
 
 		btnNewMessage.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				// new message
+				SendMessage sm = new SendMessage(CrowdCrudDelegate.getById(2));
+				sm.setVisible(true);
 			}
 		});
 		searchTextField.addKeyListener(new KeyAdapter() {
@@ -239,15 +254,15 @@ public class MessagePanel extends JPanel {
 							searchTextField.getText(),
 							categComboBox.getSelectedIndex());
 					((InBoxMessageTableModel) (table.getModel()))
-					.fireTableDataChanged();
+							.fireTableDataChanged();
 				} else {
 					((OutBoxMessageTableModel) (table.getModel())).initSearch(
 							searchTextField.getText(),
 							categComboBox.getSelectedIndex());
 					((OutBoxMessageTableModel) (table.getModel()))
-					.fireTableDataChanged();
+							.fireTableDataChanged();
 				}
-				
+
 			}
 		});
 
