@@ -52,7 +52,8 @@ public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MainFrame.getInstance(new Crowd()).show();
+					//MainFrame.getInstance(new Crowd()).show();
+					new AuthentificationFrame().show();
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
