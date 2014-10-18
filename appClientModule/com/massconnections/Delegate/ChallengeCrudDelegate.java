@@ -48,5 +48,9 @@ public class ChallengeCrudDelegate {
 		getRemoteEJB().update(challenge);
 
 	}
+	
+	public static void remove(Challenge chal) {
+		getRemoteEJB().delete(chal);
+	}
 
 }

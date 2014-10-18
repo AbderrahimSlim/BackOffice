@@ -18,7 +18,7 @@ public class ChallengeDetails extends JFrame {
 	public ChallengeDetails(Challenge challenge) {
 		setResizable(false);
 		setTitle("Challenge Details");
-		
+		setBounds(100, 100, 800, 493);
 		JPanel panel = new JPanel();
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(

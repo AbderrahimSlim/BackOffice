@@ -171,7 +171,11 @@ if (challenge.getCategory().getName() != null) {
 
 	@Override
 	public void removeRows(List elements) {
-		throw new UnsupportedOperationException("Not supported yet.");
+		List<Challenge> chals = (List<Challenge>) elements;
+		for (int i = 0; i < chals.size(); i++) {
+			ChallengeCrudDelegate.remove(chals.get(i));
+			ChallengeList.remove(chals.get(i));
+		}
 	}
 
 }
